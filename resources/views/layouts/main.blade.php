@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <meta charset="utf-8">
-    <title>Moderna - Bootstrap 3 flat corporate template</title>
+    <title>@yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="http://bootstraptaste.com" />
@@ -55,5 +55,7 @@
     <script src="{{asset('public/js/animate.js')}}"></script>
     <script src="{{asset('public/js/custom.js')}}"></script>
     <script src="{{asset('public/js/jquery-3.5.1.min.js')}}"></script>
+    @session('script')
+    @show
 </body>
 </html>

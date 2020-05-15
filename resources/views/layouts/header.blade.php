@@ -20,9 +20,9 @@
                             <li><a href="pricingbox.html">Pricing box</a></li>
                         </ul>
                     </li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="{{route('book.index')}}">Portfolio</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="{{route('contact.index')}}">Contact</a></li>
                 </ul>
             </div>
         </div>
