@@ -14,4 +14,8 @@ class Loai_Sach extends Model
         'sap_xep',
         'trang_thai',
     ];
+
+    public function sach() {
+        return $this->hasMany('App\Sach');
+    }
 }

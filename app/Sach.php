@@ -26,4 +26,8 @@ class Sach extends Model
         'gia_bia',
         'noi_bat',
     ];
+
+    public function loai_sach() {
+        return $this->belongsTo('App\Loai_Sach');
+    }
 }

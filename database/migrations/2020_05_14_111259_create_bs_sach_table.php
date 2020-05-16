@@ -20,6 +20,7 @@ class CreateBsSachTable extends Migration
             $table->text('gioi_thieu')->nullable();
             $table->string('doc_thu')->nullable();
             $table->integer('id_loai_sach')->nullable();
+            $table->foreign('id_loai_sach')->references('id')->on('bs_loai_sach')->onDelete('cascade');
             $table->integer('id_nha_xuat_ban')->nullable();
             $table->integer('so_trang')->nullable();
             $table->string('ngay_xuat_ban')->nullable();

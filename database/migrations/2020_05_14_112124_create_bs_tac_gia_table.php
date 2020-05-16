@@ -18,6 +18,7 @@ class CreateBsTacGiaTable extends Migration
             $table->string('ten_tac_gia')->nullable();
             $table->date('ngay_sinh')->nullable();
             $table->text('gioi_thieu')->nullable();
+            $table->string('hinh')->nullable();
             $table->timestamps();
         });
     }

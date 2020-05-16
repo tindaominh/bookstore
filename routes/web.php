@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return redirect('/home');
 });
 
-Route::prefix('product')->group(function() {
-    Route::get('','BooksController@index')->name('book.index');
+Route::get('/home', 'HomeController@index');
+
+Route::prefix('sach')->group(function() {
+    Route::get('','SachController@index')->name('sach.index');
 });
 
 Route::prefix('contact')->group(function() {

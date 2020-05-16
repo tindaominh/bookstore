@@ -12,5 +12,6 @@ class Tac_Gia extends Model
         'ten_tac_gia',
         'ngay_sinh',
         'gioi_thieu',
+        'hinh',
     ];
 }
