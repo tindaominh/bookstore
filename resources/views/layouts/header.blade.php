@@ -15,7 +15,7 @@
 							<li><a href="#">Yêu thích</a></li>
 							
 							
-							<li><a href="#">So sách</a></li>
+							<!-- <li><a href="#">So sách</a></li> -->
 							
 							
 							<li><a href="/account/login">Đăng nhập</a></li>
@@ -32,7 +32,7 @@
 				<div id="header_logo" class="col-xs-12 col-sm-12 col-md-3">
 					<a class="logo" href="//alphabooks.vn">
 						
-						<img class="logo img-responsive" alt="Alpha Books" src="//bizweb.dktcdn.net/100/197/269/themes/739166/assets/logo_mobile.png?1587355076622" />
+						<img class="logo img-responsive" alt="Bookstore" src="{{asset('public/images/hinh_logo/bookstore.png')}}" style="height: 40px; width: 200px;" />
 						
 						
 					</a>
@@ -404,7 +404,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="header-megamenu col-xs-12 col-md-7">
+					<div class="header-megamenu col-xs-12 col-md-7" >
 						<nav id="fieldmegamenu-main">
 							<ul>
 								

@@ -183,7 +183,7 @@ a:hover {
 }
 
 .cart-total ul li .cart-toggler {
-    background-color: #F47920;
+    background-color: steelblue;
     color: #fff;
     display: block;
     font-size: 13px;
@@ -378,7 +378,7 @@ p.buttons a {
 }
 
 .header-vmegamenu .v-megamenu-container .v-megamenu-title {
-    background-color: #F47920;
+    background-color: steelblue;
     padding: 15px 19px;
     text-align: left
 }
@@ -512,7 +512,7 @@ p.buttons a {
 }
 
 .stt-menu .st_header {
-    background-color: #F47920;
+    background-color: steelblue;
     color: #fff
 }
 
@@ -593,7 +593,7 @@ p.buttons a {
 }
 
 .home-vmegamenu .v-megamenu li:hover {
-    background-color: #F47920
+    background-color: steelblue;
 }
 
 .home-vmegamenu .v-megamenu li:hover>a {
