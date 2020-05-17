@@ -31,6 +31,7 @@ class CreateBsSachTable extends Migration
             $table->string('hinh')->nullable();
             $table->integer('don_gia')->nullable();
             $table->integer('gia_bia')->nullable();
+            $table->integer('giam_gia')->nullable();
             $table->tinyInteger('noi_bat')->nullable();
             $table->timestamps();
 

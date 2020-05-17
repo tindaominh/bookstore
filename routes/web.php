@@ -26,3 +26,18 @@ Route::prefix('sach')->group(function() {
 Route::prefix('contact')->group(function() {
     Route::get('','ContactController@index')->name('contact.index');
 });
+
+Route::prefix('nguoi-dung')->group(function() {
+    Route::get('/dang-nhap','NguoiDungController@getDangNhap')->name('nguoidung.dangnhap');
+
+
+});
+
+//admin
+Route::group(['prefix'=>'admin'], function() {
+    Route::prefix('sach')->group(function() {
+        Route::get('them-sach','SachController@getThemSach')->name('admin.sach');
+        Route::post('them-sach','SachController@postThemSach')->name('admin.sach.them');
+    });
+});
+

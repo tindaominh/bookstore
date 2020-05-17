@@ -27,4 +27,5 @@ class HomeController extends Controller
                              'sach2'    =>$sach2,
                              'tin_tuc'  =>$tin_tuc]);
     }
+
 }

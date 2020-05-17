@@ -62,7 +62,9 @@
     <script src="{{asset('public/js/animate.js')}}"></script>
     <script src="{{asset('public/js/custom.js')}}"></script>
     <script src="{{asset('public/js/jquery-3.5.1.min.js')}}"></script>
-    @session('script')
+    @section('scripts')
     @show
+
+
 </body>
 </html>

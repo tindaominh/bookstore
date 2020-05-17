@@ -18,7 +18,7 @@
 							<!-- <li><a href="#">So sách</a></li> -->
 							
 							
-							<li><a href="/account/login">Đăng nhập</a></li>
+							<li><a href="{{route('nguoidung.dangnhap')}}">Đăng nhập</a></li>
 							
 						</ul>
 						

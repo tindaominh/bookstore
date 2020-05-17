@@ -24,6 +24,7 @@ class Sach extends Model
         'hinh',
         'don_gia',
         'gia_bia',
+        'giam_gia',
         'noi_bat',
     ];
 
