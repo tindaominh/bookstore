@@ -25,6 +25,7 @@
     <link href="{{asset('public/css/frontend/responsive.css')}}" rel="stylesheet" />
     <link href="{{asset('public/css/frontend/iwish.css')}}" rel="stylesheet" />
     <link href="{{asset('public/css/frontend/theme.css')}}" rel="stylesheet" />
+    <link href="{{asset('public/css/frontend/style1.scss.css')}}" rel="stylesheet" />
 
     <!-- Theme skin -->
     <link href="{{asset('public/skins/default.css')}}" rel="stylesheet" />
@@ -61,6 +62,7 @@
     <script src="{{asset('public/js/jquery.flexslider.js')}}"></script>
     <script src="{{asset('public/js/animate.js')}}"></script>
     <script src="{{asset('public/js/custom.js')}}"></script>
+    <script src="{{asset('public/js/alphabook/custom.js')}}"></script>
     <script src="{{asset('public/js/jquery-3.5.1.min.js')}}"></script>
     @section('scripts')
     @show
