@@ -19,10 +19,17 @@
     </div>
 
     <div class="container">
+        @if(Cart::count() == 0) 
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="text-align: center;">Giỏ hàng của bạn chưa có sản phẩm, quay lại để <a href="{{route('trangchu')}}">  tiếp tục mua hàng</a>.</h1>
+            </div>
+        </div>
+        @else
         <div class="row">
             <div class="col-md-12">
                 <table class="table">
-                    <thead class="thead-dark">
+                    <thead class="thead-light">
                         <tr>
                             <th scope="col">Stt</th>
                             <th scope="col">Hình ảnh</th>
@@ -57,12 +64,21 @@
                       <?php $i++;?>
                       @endforeach
                     </tbody>
-                  </table>
-
+                    <tfoot>
+                        <tr class="bg-info">
+                            <td>Tổng tiền</td>
+                            <td colspan="4">&nbsp;</td>
+                            <td>{{Cart::subtotal()}}</td>
+                        </tr>
+                    </tfoot>
+                </table>
             </div>
         </div>
+        <a href="{{ route('nguoidung.dathang') }}" class="btn bg-warning" style="margin-bottom: 50px;"> Tiến hàng đặt hàng</a>
+        @endif
     </div>
 
 </div>
 
+@include('layouts.footer')
 @stop
