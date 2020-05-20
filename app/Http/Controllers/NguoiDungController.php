@@ -28,9 +28,9 @@ class NguoiDungController extends Controller
         $sach = Sach::where('id', $id)->first();
 		if($sach->don_gia == null){
             $price = "Liên hệ cửa hàng";
-            Cart::add($sach->id, $sach->ten_sach, 1, $price, ['hinh' => $sach->hinh]);
+            Cart::add($id, $sach->ten_sach, 1, $price, ['hinh' => $sach->hinh]);
         }else {
-            Cart::add($sach->id, $sach->ten_sach, 1, $sach->don_gia, ['hinh' => $sach->hinh]);
+            Cart::add($id, $sach->ten_sach, 1, $sach->don_gia, ['hinh' => $sach->hinh]);
         }
 		return back();
     }
@@ -40,6 +40,11 @@ class NguoiDungController extends Controller
         $qTy = $request->txtSoLuong;
         Cart::update($rowId, $qTy);
         return redirect('nguoi-dung/gio-hang/thong-tin-gio-hang');
+    }
+
+    public function XoaGioHang($id) {
+        Cart::remove($id); 
+        return redirect()->back()->with('success','Xóa thành công');
     }
 
     public function TienHanhDatHang() {
@@ -55,8 +60,42 @@ class NguoiDungController extends Controller
             'dien_thoai' => $request->dien_thoai,
             'email' => $request->email,
             'ngay_dat' => Carbon::now('Asia/Ho_Chi_Minh'),
-            // rand(100000,999999)
+            'ma_don_hang' => rand(100000,999999),
         ];
         return view('nguoidung.xacnhan',['data' => $data]);
+    }
+
+    public function DatHang(Request $request) {
+        if($request->input('edit')) {
+            return redirect()->back()->withInput();
+        }
+        if($request->input('dat_hang')) {
+
+            $don_hang = new Don_Hang;
+            $don_hang['ma_don_hang'] = $request->ma_don_hang;
+            $don_hang['tong_tien'] = $request->tong_tien;
+            $don_hang['ngay_dat'] = $request->ngay_dat;
+            $don_hang['id_nguoi_dung'] =   1;
+            $don_hang['ho_ten_nguoi_nhan'] = $request->ho_ten_nguoi_nhan;
+            $don_hang['email_nguoi_nhan'] = $request->email;
+            $don_hang['so_dien_thoai_nguoi_nhan'] = $request->dien_thoai;
+            $don_hang['trang_thai'] = 1;
+            $don_hang['dia_chi_nguoi_nhan'] = $request->dia_chi;
+            $don_hang->save();
+
+          
+            $chi_tiet_don_hang = new Chi_Tiet_Don_Hang;
+            $chi_tiet_don_hang['id_don_hang'] = $request->id_sach;
+            $chi_tiet_don_hang['id_sach'] = $request->id_sach;
+            $chi_tiet_don_hang['so_luong'] = $request->so_luong;
+            $chi_tiet_don_hang['don_gia'] = $request->don_gia;
+            $chi_tiet_don_hang['thanh_tien'] = $request->thanh_tien;
+            $chi_tiet_don_hang->save();
+            
+            Cart::destroy();
+
+            return view('nguoidung.thanhcong');
+           
+        }
     }
 }
