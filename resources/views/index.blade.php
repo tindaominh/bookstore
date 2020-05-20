@@ -61,6 +61,7 @@
 				<div class="center_column col-xs-12 col-sm-12 col-md-9 col-md-push-3">
 					
 					<!-- sach moi -->
+	
 					<div id="best-sellers_block_right" class="block horizontal_mode clearfix">
 						<h4 class="title_block"> 
 							<a href="sach-moi">Sách mới</a>
@@ -72,65 +73,64 @@
 								<div class="owl-wrapper-outer">
 									<div class="owl-wrapper" style="width: 1000px; left: 0px; display: block; transition: all 0ms ease 0s; transform: translate3d(0px, 0px, 0px);">
 										@foreach($sach as $item)
-										<div class="owl-item" style="width: 220px;">
 
-											<div class="item">
-					
-												<div class="item-inner">
-													<div class="stl_full_width">
-														<div class="laster-thumb">
+											<div class="owl-item" style="width: 220px;">
 
-															<div class="b-prices-reduc">
-																<div class="prices-reduc"> 
-																	<span class="price-percent-reduction">-20%</span>
-																</div>
-															</div>
-															
-															<a href="#" class="prod-img">
-																<img src="{{asset('public/images')}}/{{$item->hinh}}" alt="{{$item->ten_sach}}" style="height:200px; width:170px;">
-															</a>
-															<form action="/cart/add" method="post" class="variants" id="product-actions-17624409" enctype="multipart/form-data">
+												<div class="item">
+						
+													<div class="item-inner">
+														<div class="stl_full_width">
+															<div class="laster-thumb">
 																
+																<div class="b-prices-reduc">
+																	<div class="prices-reduc"> 
+																		<span class="price-percent-reduction"> -20%</span>
+																	</div>
+																</div>
+																
+																<a href="#" class="prod-img">
+																	<img src="{{asset('public/images/'.$item->hinh)}}" alt="{{$item->ten_sach}}" style="height:200px; width:170px;">
+																</a>
 																
 																<span class="tz-shop-meta">
-																	
-																	
-																	<input type="hidden" name="variantId" value="32051630" />
-																	<a href="javascript:void(0);" class="tzshopping add_to_cart add-cart"  title="Mua ngay">
+
+																	<a href="{{route('nguoidung.them.giohang',['id'=> $item->id])}}" class="tzshopping add_to_cart add-cart"  title="Mua ngay" name="$item->id"
+																		onclick="alert('Thêm vào giỏ hàng thành công')"	 id="btnThemVaoGioHang"
+																	>
 																		<i class="fa fa-shopping-cart"></i> Mua ngay
 																	</a>
 																	
 																</span>
-																
-																
-															</form>
-														</div>
-													</div>
-													<div class="stl_full_width">
-														<div class="right-block clearfix">
-															<div class="left_cnt_product">
-																<h3><a href="#" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
-																<div class="product-price">
-																	
-																		
-																			<span class="price-sale clearfix">
-																				<small>{{number_format($item->don_gia)}} ₫</small>
-																				
-																			</span>
-																			
-																		
-																	
-																	<div class="bizweb-product-reviews-badge" data-id="17624409"></div>
-																</div>
+	
 															</div>
+														</div>
+														<div class="stl_full_width">
+															<div class="right-block clearfix">
+																<div class="left_cnt_product">
+																	<h3><a href="#" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
+																	
+																	<div class="product-price">
+																		<p class="price-sale clearfix">
+																			<small>{{number_format($item->don_gia)}} ₫</small>
+																		</p>
+																		<p class="price-regular">
+																		<small>{{number_format($item->gia_bia)}} ₫</small>
+																		</p>
+																				
+																		<div class="bizweb-product-reviews-badge" data-id="17624409">
+																			
+																		</div>
+																	</div>
+																</div>
 
+															</div>
 														</div>
 													</div>
+													
 												</div>
-												
-											</div>
 
-										</div>
+											</div>
+										
 										@endforeach
 									</div>
 								</div>
@@ -153,7 +153,7 @@
 					<!-- sach ban chay -->
 					<div id="featured_products_block" class="block horizontal_mode clearfix">
 						<h4 class="title_block"> 
-							<a href="sach-ban-chay">Sách bán chạy nhất </a>
+							<a href="sach-ban-chay">Sách bán chạy nhất</a>
 						</h4>
 						<div class="row">
 							<div id="field_bestsellers" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
@@ -173,18 +173,17 @@
 															<a href="#" class="prod-img">
 																<img src="{{asset('public/images')}}/{{$item->hinh}}" alt="{{$item->ten_sach}}" style="height:200px; width:170px;">
 															</a>
-															<form action="/cart/add" method="post" class="variants" id="product-actions-17624409" enctype="multipart/form-data">
+
+															<span class="tz-shop-meta">
 																
-																<span class="tz-shop-meta">
-																	
-																	<input type="hidden" name="variantId" value="32051630" />
-																	<a href="javascript:void(0);" class="tzshopping add_to_cart add-cart"  title="Mua ngay">
-																		<i class="fa fa-shopping-cart"></i> Mua ngay
-																	</a>
-																	
-																</span>
+																<input type="hidden" name="variantId" value="32051630" />
+																<a href="{{route('nguoidung.them.giohang',['id'=> $item->id])}}" class="tzshopping add_to_cart add-cart"  title="Mua ngay"
+																onclick="alert('Thêm vào giỏ hàng thành công')"	 id="btnThemVaoGioHang"	name="{{$item->id}}"
+																>
+																	<i class="fa fa-shopping-cart"></i> Mua ngay
+																</a>
 																
-															</form>
+															</span>
 														</div>
 													</div>
 													<div class="stl_full_width">
@@ -194,7 +193,13 @@
 																<div class="product-price">
 	
 																	<span class="price-sale clearfix">
-																		<small>{{number_format($item->don_gia)}} ₫</small>
+																		<small>
+																			@if ($item->don_gia == null)
+																				Liên hệ 
+																			@else
+																			 {{number_format($item->don_gia)}} ₫
+																			@endif
+																		</small>
 																	</span>
 
 																	<div class="bizweb-product-reviews-badge" data-id="17624409"></div>
@@ -212,6 +217,7 @@
 										@endforeach
 
 									</div>
+									
 								</div>
 
 							</div>
@@ -256,21 +262,18 @@
 																<a href="#" class="prod-img">
 																	<img src="{{asset('public/images')}}/{{$item->hinh}}" alt="{{$item->ten_sach}}" style="height:200px; width:170px;">
 																</a>
-																<form action="/cart/add" method="post" class="variants" id="product-actions-16679452" enctype="multipart/form-data">
+
+																<span class="tz-shop-meta">
+
+																	<input type="hidden" name="variantId" value="30026589" />
+																	<a href="{{route('nguoidung.them.giohang',['id'=> $item->id])}}" class="tzshopping add_to_cart add-cart"  title="Mua ngay"
+																	onclick="alert('Thêm vào giỏ hàng thành công')"	 id="btnThemVaoGioHang" name="{{$item->id}}"	
+																	>
+																		<i class="fa fa-shopping-cart"></i> Mua ngay
+																	</a>
 																	
-																	
-																	<span class="tz-shop-meta">
-																		
-																		
-																		<input type="hidden" name="variantId" value="30026589" />
-																		<a href="javascript:void(0);" class="tzshopping add_to_cart add-cart"  title="Mua ngay">
-																			<i class="fa fa-shopping-cart"></i> Mua ngay
-																		</a>
-																		
-																	</span>
-																	
-																	
-																</form>
+																</span>
+
 															</div>
 														</div>
 														<div class="stl_full_width">
@@ -279,23 +282,16 @@
 																	<h3><a href="/bo-cam-nang-mo-nha-hang" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
 
 																	<div class="product-price">
-																		
-																		
-																		<p class="price-sale clearfix">
-																			<small>{{number_format($item->don_gia)}} ₫</small>
+																		<span class="price-sale clearfix">
+																			<p class="price-sale clearfix">
+																				<small>{{number_format($item->don_gia)}} ₫</small>	
+																			</p>
 																			
-																			<span class="compare-price">- 20%</span>
-																			
-																		</p>
-																		
-																		<p class="price-regular"><small>{{number_format($item->gia_bia)}} ₫</small></p>
-																		
-																		
-																		
-																		<div class="bizweb-product-reviews-badge" data-id="16679452"></div>
-																	</div>
-																	
+																			<p class="price-regular"><small>{{number_format($item->gia_bia)}} ₫</small></p>
 
+																			<div class="bizweb-product-reviews-badge" data-id="16679452"></div>
+																		</span>
+																	</div>
 
 																</div>
 															</div>
@@ -479,4 +475,37 @@
 	@include('layouts.footer')
 @endsection
 
+@section('scripts')
+<script>
+    $(document).ready(function(){
+        $("#btnThemVaoGioHang").click(function(){
+            var id= $("#btnThemVaoGioHang").attr('name');
+            // var soluong= $("#Th_soluong").val();
+            // if(soluong<=0){
+            //     alert('Vui lòng chọn Số lượng >0');
+            //     return false;
+            // }
+            $.ajax({
+                type:'POST',
+                dataType: 'json',
+                url:"{{ url('nguoi-dung/gio-hang/them-vao-gio-hang') }}/"+id,
+				// data: { _token : '<?php echo csrf_token() ?>', sl : soluong},
+				data: { _token : '<?php echo csrf_token() ?>'},
+                success:function(data) {
+                    // if(data.n==0)
+                    //     alert('Thêm vào giỏ hàng không thành công');
+                    // else
+                    // {
+                        alert('Thêm vào giỏ hàng thành công');
+                    // }
+                },
+                error:function(xhr,status,error) {
+                    alert(error);
+                }
+            });
+            return false;
+        });
+    });
+</script>
+@endsection
 

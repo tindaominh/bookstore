@@ -19,4 +19,8 @@ class Don_Hang extends Model
         'trang_thai',
         'dia_chi_nguoi_nhan',
     ];
+
+    public function chi_tiet_don_hang() {
+        return $this->belongsTo('App\Chi_Tiet_Don_Hang');
+    }
 }

@@ -30,7 +30,7 @@
 		<div class="container" id="open_menu_mobile">
 			<div class="row">
 				<div id="header_logo" class="col-xs-12 col-sm-12 col-md-3">
-					<a class="logo" href="//alphabooks.vn">
+					<a class="logo" href="{{route('trangchu')}}">
 						
 						<img class="logo img-responsive" alt="Bookstore" src="{{asset('public/images/hinh_logo/bookstore.png')}}" style="height: 40px; width: 200px;" />
 						
@@ -43,18 +43,12 @@
 							<div class="cart-total">
 								<ul>
 									<li>
-										<a class="cart-toggler" href="/cart">
+										<a class="cart-toggler" href="{{route('nguoidung.giohang')}}">
 											<span class="cart-no"> <span class="cart-icon"></span> 
-												<span class="fa fa-shopping-cart"></span> (<span id="cart-total" >0</span>) sản phẩm
+												<span class="fa fa-shopping-cart"></span> (<span id="cart-total" >{{Cart::count()}}</span>) sản phẩm
 											</span>
 										</a>
-										<div class="cart-droplist hidden-xs">
-											<div style="display: none;" class="cart-droplist__content arrow_box">
-												<div class="cart-droplist__status"><i class="fa fa-check" aria-hidden="true"></i> <span class="cart-counter-list">0</span> Sản phẩm trong giỏ hàng</div>
-												<div id="cart-sidebar" class="mini-list">
-												</div>
-											</div>
-										</div>
+										
 									</li>
 								</ul>
 							</div>

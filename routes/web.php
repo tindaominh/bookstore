@@ -17,7 +17,7 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('trangchu');
 
 Route::prefix('sach')->group(function() {
     Route::get('','SachController@index')->name('sach.index');
@@ -28,9 +28,14 @@ Route::prefix('contact')->group(function() {
 });
 
 Route::prefix('nguoi-dung')->group(function() {
-    Route::get('/dang-nhap','NguoiDungController@getDangNhap')->name('nguoidung.dangnhap');
-
-
+    Route::get('dang-nhap','NguoiDungController@getDangNhap')->name('nguoidung.dangnhap');
+    Route::get('gio-hang/thong-tin-gio-hang','NguoiDungController@ThongTinGioHang')->name('nguoidung.giohang');
+    Route::get('gio-hang/them-vao-gio-hang/{id}','NguoiDungController@ThemVaoGioHang')->name('nguoidung.them.giohang');
+    Route::post('gio-hang/cap-nhat-gio-hang','NguoiDungController@CapNhatGioHang');
+    Route::get('gio-hang/xoa-gio-hang/{id}','NguoiDungController@XoaGioHang')->name('nguoidung.xoa.giohang');
+    Route::get('gio-hang/tien-hanh-dat-hang','NguoiDungController@TienHanhDatHang')->name('nguoidung.dathang');
+    Route::post('gio-hang/tien-hanh-dat-hang','NguoiDungController@XacNhanDatHang')->name('nguoidung.dathang.xacnhan');
+    Route::post('gio-hang/tien-hanh-dat-hang/thanh-cong','NguoiDungController@DatHang')->name('nguoidung.dathang.thanhcong');
 });
 
 //admin
@@ -40,4 +45,5 @@ Route::group(['prefix'=>'admin'], function() {
         Route::post('them-sach','SachController@postThemSach')->name('admin.sach.them');
     });
 });
+
 
