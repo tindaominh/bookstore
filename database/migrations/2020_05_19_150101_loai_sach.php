@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBsChiTietChatTable extends Migration
+class LoaiSach extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateBsChiTietChatTable extends Migration
      */
     public function up()
     {
-        Schema::create('bs_chi_tiet_chat', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('session_id_chat')->nullable();
-            $table->integer('id_nguoi_dung_tl')->nullable();
-            $table->integer('time_chat')->nullable();
+        Schema::create('bs_loai_sach', function(Blueprint $table){
+            $table->bigIncrements('id');
+            $table->string('ten_loai_sach', 255);
+            $table->integer('id_loai_cha');
+            $table->string('sap_xep', 255);
+            $table->tinyInteger('trang_thai');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateBsChiTietChatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bs_chi_tiet_chat');
+        //
     }
 }

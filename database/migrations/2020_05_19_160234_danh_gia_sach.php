@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBsLoaiTinTucTable extends Migration
+class DanhGiaSach extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateBsLoaiTinTucTable extends Migration
      */
     public function up()
     {
-        Schema::create('bs_loai_tin_tuc', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('ten_loai_tin')->nullable();
-            $table->string('alias')->nullable();
+        Schema::create('bs_danh_gia_sach', function(Blueprint $table){
+            $table->bigIncrements('id');
+            $table->integer('danh_gia');
+            $table->unsignedBigInteger('id_nguoi_dung');
+
+            //forign
+            $table->foreign('id_nguoi_dung')->references('id')->on('bs_nguoi_dung');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateBsLoaiTinTucTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bs_loai_tin_tuc');
+        //
     }
 }

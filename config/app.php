@@ -163,6 +163,10 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
+        //add
+        Spatie\Permission\PermissionServiceProvider::class,
+	    Collective\Html\HtmlServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -228,6 +232,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => Gloudemans\Shoppingcart\Cart::class,
+
+        //add
+        'Form' => Collective\Html\FormFacade::class,
+	    'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

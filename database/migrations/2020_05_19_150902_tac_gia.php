@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBsTacGiaTable extends Migration
+class TacGia extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateBsTacGiaTable extends Migration
      */
     public function up()
     {
-        Schema::create('bs_tac_gia', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('ten_tac_gia')->nullable();
-            $table->date('ngay_sinh')->nullable();
-            $table->text('gioi_thieu')->nullable();
-            $table->string('hinh')->nullable();
+        Schema::create('bs_tac_gia', function(Blueprint $table)
+        {
+            $table->bigIncrements('id');
+            $table->string('ten_tac_gia', 255);
+            $table->date('ngay_sinh');
+            $table->text('gioi_thieu');
+            $table->string('hinh', 255);
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateBsTacGiaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bs_tac_gia');
+        //
     }
 }
