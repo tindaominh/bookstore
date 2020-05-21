@@ -1,39 +1,37 @@
-<section id="featured">
-	<!-- start slider -->
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-	<!-- Slider -->
-        <div id="main-slider" class="flexslider">
-            <ul class="slides">
-              <li>
-                <img src="{{asset('public/img/slides/1.jpg')}}" alt="" />
-                <div class="flex-caption">
-                    <h3>Modern Design</h3> 
-					<p>Duis fermentum auctor ligula ac malesuada. Mauris et metus odio, in pulvinar urna</p> 
-					<a href="#" class="btn btn-theme">Learn More</a>
-                </div>
-              </li>
-              <li>
-                <img src="{{asset('public/img/slides/2.jpg')}}" alt="" />
-                <div class="flex-caption">
-                    <h3>Fully Responsive</h3> 
-					<p>Sodales neque vitae justo sollicitudin aliquet sit amet diam curabitur sed fermentum.</p> 
-					<a href="#" class="btn btn-theme">Learn More</a>
-                </div>
-              </li>
-              <li>
-                <img src="{{asset('public/img/slides/3.jpg')}}" alt="" />
-                <div class="flex-caption">
-                    <h3>Clean & Fast</h3> 
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit donec mer lacinia.</p> 
-					<a href="#" class="btn btn-theme">Learn More</a>
-                </div>
-              </li>
-            </ul>
-        </div>
-	<!-- end slider -->
-			</div>
-		</div>
-	</div>	
-	</section>
+<!--Slider-->
+<div id="field_slideshow" class="slideshow col-xs-12 col-sm-12 col-md-9">
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="//bizweb.dktcdn.net/100/197/269/themes/739166/assets/slider-re1.jpg?1587355076622" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="//bizweb.dktcdn.net/100/197/269/themes/739166/assets/slider-re2.jpg?1587355076622" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="//bizweb.dktcdn.net/100/197/269/themes/739166/assets/slider-re3.jpg?1587355076622" class="d-block w-100" alt="...">
+    </div>
+  </div>
+
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+
+</div>
+
+</div>
+<!--End Slider-->
