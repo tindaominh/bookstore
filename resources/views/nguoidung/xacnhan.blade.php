@@ -29,25 +29,16 @@
                 <form action="{{route('nguoidung.dathang.thanhcong')}}" method="post" >
                     <input type="hidden" name="_token" value="{{csrf_token()}}" />
 
-                    <h3>Đơn đặt hàng</h3>
+                    <h3>Xác nhận đơn đặt hàng</h3>
 
-                    <input type="hidden" name="ho_ten_nguoi_nhan" value="{{$data['ho_kh'].' '.$data['ten_kh']}}" >
+                    <input type="hidden" name="ho_ten" value="{{$data['ho_kh'].' '.$data['ten_kh']}}" >
                     <input type="hidden" name="dia_chi" value="{{$data['dia_chi']}}" >
                     <input type="hidden" name="dien_thoai" value="{{$data['dien_thoai']}}" >
                     <input type="hidden" name="email" value="{{$data['email']}}" >
-                    <input type="hidden" name="ma_don_hang" value="S{{$data['ma_don_hang']}}" >
-                    <input type="hidden" name="ngay_dat" value="{{$data['ngay_dat']}}" >
-                    <input type="hidden" name="tong_tien" value="{{(float)(Cart::subtotal(null, null, ''))}}" >                   
+                    <input type="hidden" name="ma_don_hang" value="S{{$data['ma_don_hang']}}" >                
 
                     <table class="table">
-                        <tr>
-                            <td><b>Số hóa đơn</b></td>
-                        
-                            <td>S{{$data['ma_don_hang']}}</td>
-                            
-                            <td><b>Ngày hóa đơn</b></td>
-                            <td>{{ $data['ngay_dat']}}</td>
-                        </tr>
+            
                         <tr>
                             <td><b>Khách hàng</b></td>
                             <td>{{ $data['ho_kh'] }}&nbsp;{{ $data['ten_kh'] }}</td>
@@ -82,16 +73,16 @@
                                 <td>
                                     <img src="{{asset('public/images/'.$item->options->hinh)}}" class="img-thumbnail" style="max-width:75px">
                                 </td>
-                                <input type="text" name="id_sach" value="{{$item->id}}" >
+                               
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->qty }}</td>
-                                <input type="hidden" name="so_luong" value="{{$item->qty}}" >
+                                
                                 <td>{{ number_format($item->price) }} đ</td>
-                                <input type="hidden" name="don_gia" value="{{$item->price}}" >
+                                
                                 <td>{{ number_format($item->qty * $item->price) }} đ</td>
-                                <input type="hidden" name="thanh_tien" value="{{$item->qty * $item->price}}" >
+                                
                             </tr>
-                                <input type="hidden" name="i" value="{{$i}}" >
+                               
                             <?php $i++;?>
                             @endforeach
                         </tbody>

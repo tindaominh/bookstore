@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\NguoiDungRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 use Carbon\Carbon;
 
@@ -11,6 +13,7 @@ use App\Sach;
 use Cart;
 use App\Don_Hang;
 use App\Chi_Tiet_Don_Hang;
+use App\Mail\SendMailNguoiDung;
 
 
 class NguoiDungController extends Controller
@@ -53,15 +56,16 @@ class NguoiDungController extends Controller
 
     public function XacNhanDatHang(NguoiDungRequest $request) {
         $validated = $request->validated();
+        
         $data = [
-            'ho_kh' => $request->ho_kh,
-            'ten_kh' => $request->ten_kh,
-            'dia_chi' => $request->dia_chi,
+            'ho_kh'      => $request->ho_kh,
+            'ten_kh'     => $request->ten_kh,
+            'dia_chi'    => $request->dia_chi,
             'dien_thoai' => $request->dien_thoai,
-            'email' => $request->email,
-            'ngay_dat' => Carbon::now('Asia/Ho_Chi_Minh'),
-            'ma_don_hang' => rand(100000,999999),
+            'email'      => $request->email,
+            'ma_don_hang'=> rand(1,1000),
         ];
+        
         return view('nguoidung.xacnhan',['data' => $data]);
     }
 
@@ -71,31 +75,56 @@ class NguoiDungController extends Controller
         }
         if($request->input('dat_hang')) {
 
-            $don_hang = new Don_Hang;
-            $don_hang['ma_don_hang'] = $request->ma_don_hang;
-            $don_hang['tong_tien'] = $request->tong_tien;
-            $don_hang['ngay_dat'] = $request->ngay_dat;
-            $don_hang['id_nguoi_dung'] =   1;
-            $don_hang['ho_ten_nguoi_nhan'] = $request->ho_ten_nguoi_nhan;
-            $don_hang['email_nguoi_nhan'] = $request->email;
-            $don_hang['so_dien_thoai_nguoi_nhan'] = $request->dien_thoai;
-            $don_hang['trang_thai'] = 1;
-            $don_hang['dia_chi_nguoi_nhan'] = $request->dia_chi;
-            $don_hang->save();
-
-          
-            $chi_tiet_don_hang = new Chi_Tiet_Don_Hang;
-            $chi_tiet_don_hang['id_don_hang'] = $request->id_sach;
-            $chi_tiet_don_hang['id_sach'] = $request->id_sach;
-            $chi_tiet_don_hang['so_luong'] = $request->so_luong;
-            $chi_tiet_don_hang['don_gia'] = $request->don_gia;
-            $chi_tiet_don_hang['thanh_tien'] = $request->thanh_tien;
-            $chi_tiet_don_hang->save();
+            $id = DB::table('bs_nguoi_dung')->insertGetId(
+                [
+                    'ho_ten'     => $request->ho_ten,
+                    'dia_chi'    => $request->dia_chi,
+                    'dien_thoai' => $request->dien_thoai,
+                    'email'      => $request->email,
+                    'diem_tich_luy' => 1,
+                    'created_at' => date('Y-m-d H:m:s'),
+                    'updated_at' => date('Y-m-d H:m:s'),
+            ]);
+    
+            $id = DB::table('bs_don_hang')->insertGetId(
+                [
+                    'ma_don_hang'           => $request->ma_don_hang,
+                    'tong_tien'             => str_replace(',', '', Cart::total()), 
+                    'ngay_dat'              => date('Y-m-d H:m:s'),
+                    'id_nguoi_dung'         => $id,
+                    'ho_ten_nguoi_nhan'     => $request->ho_ten,
+                    'dia_chi_nguoi_nhan'    => $request->dia_chi,
+                    'so_dien_thoai_nguoi_nhan' => $request->dien_thoai,
+                    'email_nguoi_nhan'      => $request->email,
+                    'trang_thai'            => 1,
+                    'created_at'            => date('Y-m-d H:m:s'),
+                    'updated_at'            => date('Y-m-d H:m:s'),
+            ]);
+    
+            $dsMH = array();
+            foreach (Cart::content() as $item) {
+                $dsMH[] = [
+                    'id_don_hang' => $id,
+                    'id_sach'     => $item->id,
+                    'so_luong'    => $item->qty,
+                    'don_gia'     => $item->price,
+                    // 'thanh_tien'   => str_replace(',', '', Cart::subtotal()), 
+                    'thanh_tien'  => $item->qty * $item->price,
+                    'created_at'  => date('Y-m-d H:m:s'),
+                    'updated_at'  => date('Y-m-d H:m:s'),
+                ];
+            }
+    
+            DB::table('bs_chi_tiet_don_hang')->insert($dsMH);    
             
-            Cart::destroy();
+            // Cart::destroy();
+
+
+            Mail::to($request->email)->send(new SendMailNguoiDung($dsMH));
 
             return view('nguoidung.thanhcong');
            
         }
     }
+
 }

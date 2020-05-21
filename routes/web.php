@@ -43,7 +43,12 @@ Route::group(['prefix'=>'admin'], function() {
     Route::prefix('sach')->group(function() {
         Route::get('them-sach','SachController@getThemSach')->name('admin.sach');
         Route::post('them-sach','SachController@postThemSach')->name('admin.sach.them');
+        Route::get('thong-ke','SachController@ThongKe')->name('admin.sach.thongke');
     });
 });
 
 
+
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
