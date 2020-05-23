@@ -216,7 +216,7 @@ class NguoiDungController extends Controller
     
             DB::table('bs_chi_tiet_don_hang')->insert($dsMH);    
             
-            Cart::destroy();
+            
 
             $data = array();
             foreach (Cart::content() as $item) {
@@ -239,8 +239,11 @@ class NguoiDungController extends Controller
                 ];
             }
 
+            
             Mail::to($request->email)->send(new SendMailNguoiDung($data));
 
+            Cart::destroy();
+            
             return view('nguoidung.thanhcong');
            
         }

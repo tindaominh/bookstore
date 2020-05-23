@@ -27,6 +27,6 @@ class SendMailNguoiDung extends Mailable
     {
         return $this->from(config('mail.from'))
         ->subject('Đơn hàng từ Bookstore')
-        ->view('nguoidung.send_mail_nguoi_dung',['nguoidung' =>$this->nguoidung]);
+        ->view('nguoidung.send_mail_nguoi_dung',['nguoidung' => $this->nguoidung]);
     }
 }
