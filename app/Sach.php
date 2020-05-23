@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sach extends Model
 {
     protected $table = 'bs_sach';
+    public $timestamps = false;
     protected $fillable = [
         'id',
         'ten_sach',
@@ -30,5 +31,15 @@ class Sach extends Model
 
     public function loai_sach() {
         return $this->belongsTo('App\Loai_Sach');
+    }
+
+    public function tac_gia()
+    {
+        return $this->belongsTo('App\Tac_Gia', 'id_tac_gia', 'id');
+    }
+
+    public function nha_xuat_ban()
+    {
+        return $this->belongsTo('App\Nha_Xuat_Ban', 'id_nha_xuat_ban', 'id');
     }
 }

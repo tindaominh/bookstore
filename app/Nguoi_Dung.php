@@ -26,7 +26,11 @@ class Nguoi_Dung extends Model
         'dien_thoai',
     ];
 
-    // public function loai_nguoi_dung(){
-    //     return $this->hasOne('App\Loai_Nguoi_Dung');
-    // }
+    protected $hidden = [
+        'mat_khau', 'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

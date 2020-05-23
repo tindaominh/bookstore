@@ -14,4 +14,9 @@ class Nha_Xuat_Ban extends Model
         'dien_thoai',
         'email',
     ];
+
+    public function sach()
+    {
+        return $this->hasMany('App\Sach', 'id_nha_xuat_ban');
+    }
 }

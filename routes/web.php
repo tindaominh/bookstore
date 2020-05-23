@@ -17,11 +17,18 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
-Route::get('/home', 'HomeController@index')->name('trangchu');
+// Route::get('/home', 'HomeController@index')->name('home');
 
-Route::prefix('sach')->group(function() {
-    Route::get('','SachController@index')->name('sach.index');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles','RoleController');
+    Route::resource('users','NguoiDungController');
 });
+
+Route::resource('sach', 'SachController');
+
+Route::get('/', 'TrangChuController@index')->name('trangchu');
+
 
 Route::prefix('contact')->group(function() {
     Route::get('','ContactController@index')->name('contact.index');
@@ -51,4 +58,8 @@ Route::group(['prefix'=>'admin'], function() {
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
