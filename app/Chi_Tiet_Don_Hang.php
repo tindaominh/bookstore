@@ -15,4 +15,8 @@ class Chi_Tiet_Don_Hang extends Model
         'don_gia',
         'thanh_tien',
     ];
+
+    public function don_hang() {
+        return $this->hasMany('App\Don_Hang');
+    }
 }

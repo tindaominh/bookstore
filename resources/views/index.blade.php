@@ -108,14 +108,18 @@
 															<div class="right-block clearfix">
 																<div class="left_cnt_product">
 																	<h3><a href="#" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
+																	
 																	<div class="product-price">
-																		
-																		<span class="price-sale clearfix">
+																		<p class="price-sale clearfix">
 																			<small>{{number_format($item->don_gia)}} ₫</small>
-																			
-																		</span>
+																		</p>
+																		<p class="price-regular">
+																		<small>{{number_format($item->gia_bia)}} ₫</small>
+																		</p>
 																				
-																		<div class="bizweb-product-reviews-badge" data-id="17624409"></div>
+																		<div class="bizweb-product-reviews-badge" data-id="17624409">
+																			
+																		</div>
 																	</div>
 																</div>
 
@@ -189,7 +193,13 @@
 																<div class="product-price">
 	
 																	<span class="price-sale clearfix">
-																		<small>{{number_format($item->don_gia)}} ₫</small>
+																		<small>
+																			@if ($item->don_gia == null)
+																				Liên hệ 
+																			@else
+																			 {{number_format($item->don_gia)}} ₫
+																			@endif
+																		</small>
 																	</span>
 
 																	<div class="bizweb-product-reviews-badge" data-id="17624409"></div>
@@ -272,17 +282,15 @@
 																	<h3><a href="/bo-cam-nang-mo-nha-hang" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
 
 																	<div class="product-price">
-					
-																		<p class="price-sale clearfix">
-																			<small>{{number_format($item->don_gia)}} ₫</small>
+																		<span class="price-sale clearfix">
+																			<p class="price-sale clearfix">
+																				<small>{{number_format($item->don_gia)}} ₫</small>	
+																			</p>
 																			
-																			<span class="compare-price">- 20%</span>
-																			
-																		</p>
-																		
-																		<p class="price-regular"><small>{{number_format($item->gia_bia)}} ₫</small></p>
+																			<p class="price-regular"><small>{{number_format($item->gia_bia)}} ₫</small></p>
 
-																		<div class="bizweb-product-reviews-badge" data-id="16679452"></div>
+																			<div class="bizweb-product-reviews-badge" data-id="16679452"></div>
+																		</span>
 																	</div>
 
 																</div>

@@ -3,8 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Http\Requests\StoreSach;
 use Illuminate\Support\Str;
+
+
+use App\Http\Requests\ThemSachRequest;
+use Illuminate\Support\Facades\DB;
+
+
+
 use App\Sach;
 
 class SachController extends Controller
@@ -98,5 +106,15 @@ class SachController extends Controller
 
         $data->save();
         return back()->with('success', 'Thêm thành công');
+    }
+
+    public function ThongKe() {
+
+        $mang_mau = array('f56954', '00a65a', 'f39c12', '00c0ef', '3c8dbc', 'd2d6de', '371719', '994684', 'f906d6', '3b00fd','d1f60a', '00f92a');
+        
+        $thongkesachtheothang = DB::table('bs_don_hang')
+        ->select(DB::raw('CONCAT(month(`ngay_dat`),"-" , year(`ngay_dat`)) as ngay, sum(`tong_tien`) as TT'))->groupBy('ngay')->get();
+
+        return view('backend.sach.thong_ke',['mang_mau'=>$mang_mau, 'thongkesachtheothang'=>$thongkesachtheothang]);
     }
 }
