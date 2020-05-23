@@ -15,6 +15,11 @@ class SachController extends Controller
             ->with('i');
     }
 
+    public function getSach() {
+        $sach = Sach::paginate(16);
+        return view('sach1.index',['sach' => $sach]);
+    }
+
     public function create()
     {
         return view('sach.create');

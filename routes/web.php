@@ -25,7 +25,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users','NguoiDungController');
 });
 
-Route::resource('sach', 'SachController');
+// Route::resource('sach', 'SachController');
 
 Route::get('/', 'TrangChuController@index')->name('trangchu');
 
@@ -43,6 +43,10 @@ Route::prefix('nguoi-dung')->group(function() {
     Route::get('gio-hang/tien-hanh-dat-hang','NguoiDungController@TienHanhDatHang')->name('nguoidung.dathang');
     Route::post('gio-hang/tien-hanh-dat-hang','NguoiDungController@XacNhanDatHang')->name('nguoidung.dathang.xacnhan');
     Route::post('gio-hang/tien-hanh-dat-hang/thanh-cong','NguoiDungController@DatHang')->name('nguoidung.dathang.thanhcong');
+});
+
+Route::prefix('sach')->group(function() {
+    Route::get('danh-sach-sach','SachController@getSach')->name('sach');
 });
 
 //admin

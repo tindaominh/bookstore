@@ -17,36 +17,33 @@
 
 			</div>
 
+			<div class="row" >
+				@foreach($tac_gia as $tg)
+				
+					<div class="col-lg-3">
+						<div class="box">
+							<div class="box-gray aligncenter">
+
+								<h4><a href="">{{$tg->ten_tac_gia}}</a></h4>
+								<div class="icon" >
+									<img style="height: 250px; max-width: true;" src="{{asset('public/images/hinh_tac_gia')}}/{{$tg->hinh}}" alt=""/>
+								</div>							
+									
+							</div>
+							<!-- <div class="box-bottom">
+								<a href="#">Chi tiết</a>
+							</div> -->
+						</div>
+					</div>
+				
+				@endforeach
+			</div>
+			
+			
+				<!-- divider -->
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="row" >
-						@foreach($tac_gia as $tg)
-						
-							<div class="col-lg-3">
-								<div class="box">
-									<div class="box-gray aligncenter">
-
-										<h4><a href="">{{$tg->ten_tac_gia}}</a></h4>
-										<div class="icon" >
-											<img style="height: 250px; max-width: true;" src="{{asset('public/images/hinh_tac_gia')}}/{{$tg->hinh}}" alt=""/>
-										</div>							
-											
-									</div>
-									<!-- <div class="box-bottom">
-										<a href="#">Chi tiết</a>
-									</div> -->
-								</div>
-							</div>
-						
-						@endforeach
-					</div>
-				</div>
-				</div>
-				<!-- divider -->
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="solidline">
-						</div>
+					<div class="solidline">
 					</div>
 				</div>
 			</div>
@@ -70,6 +67,7 @@
 
 							<div id="field_bestsellers" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
 
+								
 								<div class="owl-wrapper-outer">
 									<div class="owl-wrapper" style="width: 1000px; left: 0px; display: block; transition: all 0ms ease 0s; transform: translate3d(0px, 0px, 0px);">
 										@foreach($sach as $item)
@@ -77,7 +75,7 @@
 											<div class="owl-item" style="width: 220px;">
 
 												<div class="item">
-						
+
 													<div class="item-inner">
 														<div class="stl_full_width">
 															<div class="laster-thumb">
@@ -101,7 +99,7 @@
 																	</a>
 																	
 																</span>
-	
+
 															</div>
 														</div>
 														<div class="stl_full_width">
@@ -134,6 +132,7 @@
 										@endforeach
 									</div>
 								</div>
+
 
 							</div>
 						</div>
@@ -220,8 +219,12 @@
 									
 								</div>
 
+								<div class="qnt-addcart clearfix">
+									<a type="button" href="{{route('sach')}}" class="btn-cart add_to_cart_detail button_detail_product">Xem thêm</a>
+								</div>
 							</div>
 						</div>
+						
 		
 					</div>
 					
@@ -505,7 +508,9 @@
             });
             return false;
         });
-    });
+	});
+	
 </script>
+
 @endsection
 

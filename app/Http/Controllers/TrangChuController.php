@@ -12,7 +12,7 @@ use App\Tin_Tuc;
 
 class TrangChuController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
         $slides = Slide_Banner::where('trang_thai', 1)->get();
         $tac_gia = Tac_Gia::where('hinh','<>' ,null)->paginate(4);
         $sach = Sach::where('trang_thai', 1)->paginate(8);
