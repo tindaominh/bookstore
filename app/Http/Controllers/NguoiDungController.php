@@ -119,8 +119,28 @@ class NguoiDungController extends Controller
             
             // Cart::destroy();
 
+            $data = array();
+            foreach (Cart::content() as $item) {
+                $data[] = [
+                    'id_don_hang' => $id,
+                    'id_sach'     => $item->id,
+                    'so_luong'    => $item->qty,
+                    'don_gia'     => $item->price,
+                    'ten_sach'    => $item->name,
+                    // 'thanh_tien'   => str_replace(',', '', Cart::subtotal()), 
+                    'thanh_tien'  => $item->qty * $item->price,
+                    'created_at'  => date('Y-m-d H:m:s'),
+                    'updated_at'  => date('Y-m-d H:m:s'),
+                    'ho_ten'      => $request->ho_ten,
+                    'dia_chi'     => $request->dia_chi,
+                    'dien_thoai'  => $request->dien_thoai,
+                    'email'       => $request->email,
+                    'ma_don_hang' => $request->ma_don_hang,
+                    'tong_tien'   => str_replace(',', '', Cart::subtotal()),
+                ];
+            }
 
-            Mail::to($request->email)->send(new SendMailNguoiDung($dsMH));
+            Mail::to($request->email)->send(new SendMailNguoiDung($data));
 
             return view('nguoidung.thanhcong');
            

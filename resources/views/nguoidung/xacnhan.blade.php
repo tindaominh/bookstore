@@ -31,6 +31,8 @@
 
                     <h3>Xác nhận đơn đặt hàng</h3>
 
+                    <input type="hidden" name="ho_kh" value="{{$data['ho_kh']}}" >
+                    <input type="hidden" name="ten_kh" value="{{$data['ten_kh']}}" >
                     <input type="hidden" name="ho_ten" value="{{$data['ho_kh'].' '.$data['ten_kh']}}" >
                     <input type="hidden" name="dia_chi" value="{{$data['dia_chi']}}" >
                     <input type="hidden" name="dien_thoai" value="{{$data['dien_thoai']}}" >
