@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSach;
-
+use Illuminate\Support\Str;
 use App\Sach;
 
 class SachController extends Controller
 {
     public function index(Request $request) {
-        $users = Sach::orderBy('id','DESC')->paginate(10);
-        return view('sach.index',compact('users'))
-            ->with('i', ($request->input('page', 1) - 1) * 10);
+        $books = Sach::orderBy('id','ASC')->get();
+        return view('sach.index',compact('books'))
+            ->with('i');
     }
 
     public function create()
@@ -31,9 +31,9 @@ class SachController extends Controller
             else
                 return redirect()->back()->with('errror', 'Hệ thống chưa hỗ trợ định dạng file mới upload!');
             $file_name = $file->getClientOriginalName();
-            $random_file_name = str_random(4).'_'.$file_name;
+            $random_file_name = Str::random(4).'_'.$file_name;
             while(file_exists('upload/images/hinh_sach/'.$random_file_name)){
-                $random_file_name = str_random(4).'_'.$file_name; 
+                $random_file_name = Str::random(4).'_'.$file_name; 
             }
             $file->move('upload/images/hinh_sach',$random_file_name);
             $input['hinh'] = 'upload/images/hinh_sach/'.$random_file_name;

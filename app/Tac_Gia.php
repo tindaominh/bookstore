@@ -14,4 +14,9 @@ class Tac_Gia extends Model
         'gioi_thieu',
         'hinh',
     ];
+
+    public function sach()
+    {
+        return $this->hasMany('App\Sach', 'id_tac_gia');
+    }
 }

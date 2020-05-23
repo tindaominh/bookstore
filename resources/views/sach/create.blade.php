@@ -47,7 +47,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label>Giới thiệu</label>
-                        <textarea name="chi_tiet" class="ckeditor">{{ old('gioi_thieu')}}</textarea>
+                        <textarea name="gioi_thieu" class="ckeditor">{{ old('gioi_thieu')}}</textarea>
                     </div>
                 </div>
                 <div class="form-row">

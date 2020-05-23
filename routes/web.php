@@ -29,9 +29,6 @@ Route::resource('sach', 'SachController');
 
 Route::get('/', 'TrangChuController@index')->name('trangchu');
 
-Route::prefix('sach')->group(function() {
-    Route::get('','SachController@index')->name('sach.index');
-});
 
 Route::prefix('contact')->group(function() {
     Route::get('','ContactController@index')->name('contact.index');
