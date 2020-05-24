@@ -10,15 +10,14 @@
 						
 							
 						<ul id="header_links">
-							<li><a href="/account">Tài khoản của tôi</a></li>
+							<li><a href="/account"> @lang('label.account') của tôi</a></li>
 							
 							<li><a href="#">Yêu thích</a></li>
 							
-							
-							<!-- <li><a href="#">So sách</a></li> -->
-							
-							
-							<li><a href="{{route('nguoidung.dangnhap')}}">Đăng nhập</a></li>
+							<li><a href="{{route('nguoidung.dangnhap')}}">@lang('label.login')</a></li>
+
+							<li><a href="{!! route('thaydoingonngu',['language' => 'vi']) !!}">Vi</a></li>
+							<li><a href="{!! route('thaydoingonngu',['language' => 'en']) !!}">En</a></li>
 							
 						</ul>
 						

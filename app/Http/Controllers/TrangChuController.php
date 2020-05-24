@@ -12,7 +12,7 @@ use App\Tin_Tuc;
 
 class TrangChuController extends Controller
 {
-    public function index(Request $request) {
+    public function index() {
         $slides = Slide_Banner::where('trang_thai', 1)->get();
         $tac_gia = Tac_Gia::where('hinh','<>' ,null)->paginate(4);
         $sach = Sach::where('trang_thai', 1)->paginate(8);
@@ -26,6 +26,11 @@ class TrangChuController extends Controller
                              'sach1'    =>$sach1,
                              'sach2'    =>$sach2,
                              'tin_tuc'  =>$tin_tuc]);
+    }
+
+    public function ThayDoiNgonNgu($language) {
+        \Session::put('locale', $language);
+        return redirect()->back();
     }
 
 }

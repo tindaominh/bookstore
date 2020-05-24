@@ -26,30 +26,32 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 // Route::resource('sach', 'SachController');
+Route::group(['middleware' =>'locale'], function() {
+    Route::get('thay-doi-ngon-ngu/{language}','TrangChuController@ThayDoiNgonNgu')->name('thaydoingonngu');
 
-Route::get('/', 'TrangChuController@index')->name('trangchu');
+    Route::get('/', 'TrangChuController@index')->name('trangchu');
 
 
-Route::prefix('contact')->group(function() {
-    Route::get('','ContactController@index')->name('contact.index');
+    Route::prefix('contact')->group(function() {
+        Route::get('','ContactController@index')->name('contact.index');
+    });
+
+    Route::prefix('nguoi-dung')->group(function() {
+        Route::get('dang-nhap','NguoiDungController@getDangNhap')->name('nguoidung.dangnhap');
+        Route::get('gio-hang/thong-tin-gio-hang','NguoiDungController@ThongTinGioHang')->name('nguoidung.giohang');
+        Route::get('gio-hang/them-vao-gio-hang/{id}','NguoiDungController@ThemVaoGioHang')->name('nguoidung.them.giohang');
+        Route::post('gio-hang/cap-nhat-gio-hang','NguoiDungController@CapNhatGioHang');
+        Route::get('gio-hang/xoa-gio-hang/{id}','NguoiDungController@XoaGioHang')->name('nguoidung.xoa.giohang');
+        Route::get('gio-hang/tien-hanh-dat-hang','NguoiDungController@TienHanhDatHang')->name('nguoidung.dathang');
+        Route::post('gio-hang/tien-hanh-dat-hang','NguoiDungController@XacNhanDatHang')->name('nguoidung.dathang.xacnhan');
+        Route::post('gio-hang/tien-hanh-dat-hang/thanh-cong','NguoiDungController@DatHang')->name('nguoidung.dathang.thanhcong');
+    });
+
+    Route::prefix('sach')->group(function() {
+        Route::get('danh-sach-sach','SachController@getSach')->name('sach');
+        Route::get('chi-tiet-sach/{id}','SachController@getSachId')->name('sach.chitiet');
+    });
 });
-
-Route::prefix('nguoi-dung')->group(function() {
-    Route::get('dang-nhap','NguoiDungController@getDangNhap')->name('nguoidung.dangnhap');
-    Route::get('gio-hang/thong-tin-gio-hang','NguoiDungController@ThongTinGioHang')->name('nguoidung.giohang');
-    Route::get('gio-hang/them-vao-gio-hang/{id}','NguoiDungController@ThemVaoGioHang')->name('nguoidung.them.giohang');
-    Route::post('gio-hang/cap-nhat-gio-hang','NguoiDungController@CapNhatGioHang');
-    Route::get('gio-hang/xoa-gio-hang/{id}','NguoiDungController@XoaGioHang')->name('nguoidung.xoa.giohang');
-    Route::get('gio-hang/tien-hanh-dat-hang','NguoiDungController@TienHanhDatHang')->name('nguoidung.dathang');
-    Route::post('gio-hang/tien-hanh-dat-hang','NguoiDungController@XacNhanDatHang')->name('nguoidung.dathang.xacnhan');
-    Route::post('gio-hang/tien-hanh-dat-hang/thanh-cong','NguoiDungController@DatHang')->name('nguoidung.dathang.thanhcong');
-});
-
-Route::prefix('sach')->group(function() {
-    Route::get('danh-sach-sach','SachController@getSach')->name('sach');
-    Route::get('chi-tiet-sach/{id}','SachController@getSachId')->name('sach.chitiet');
-});
-
 //admin
 Route::group(['prefix'=>'admin'], function() {
     Route::prefix('sach')->group(function() {
@@ -58,7 +60,6 @@ Route::group(['prefix'=>'admin'], function() {
         Route::get('thong-ke','SachController@ThongKe')->name('admin.sach.thongke');
     });
 });
-
 
 
 Auth::routes();
