@@ -121,7 +121,8 @@ class SachController extends Controller
         ->select(DB::raw('CONCAT(month(`ngay_dat`),"-" , year(`ngay_dat`)) as ngay, sum(`tong_tien`) as TT'))->groupBy('ngay')->orderBy('ngay_dat','ASC')->get();
 
         
-        
+        $data = array();
+    
         $thongkesachtheoquy = DB::table('bs_don_hang')
         ->select(DB::raw('CONCAT(month(`ngay_dat`),"-" , year(`ngay_dat`)) as quy, sum(`tong_tien`) as TT'))
         // ->where()
