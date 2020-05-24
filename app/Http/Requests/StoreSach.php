@@ -33,9 +33,10 @@ class StoreSach extends FormRequest
 
     public function messages(){
         return [
-            'ten_sach.required' => 'Vui lòng nhập tên sách',
-            'hinh.required' => 'Vui lòng chọn hình sách',
-            'don_gia.required' => 'Vui lòng nhập giá sách',
+            'ten_sach.required' => 'Vui lòng nhập tên sách!',
+            'ngay_xuat_ban.required' => 'Vui lòng nhập ngày xuất bản!',
+            'hinh.required' => 'Vui lòng chọn hình sách!',
+            'don_gia.required' => 'Vui lòng nhập giá sách!',
         ];
     }
 }

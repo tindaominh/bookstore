@@ -26,6 +26,7 @@
 <script src="{{asset('public/js/custom.js')}}"></script>
 <script src="{{asset('public/js/alphabook/custom.js')}}"></script>
 <script src="{{URL::asset('public/ckeditor/ckeditor.js')}}"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 
 <script>

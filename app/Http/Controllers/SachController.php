@@ -45,11 +45,11 @@ class SachController extends Controller
                 return redirect()->back()->with('errror', 'Hệ thống chưa hỗ trợ định dạng file mới upload!');
             $file_name = $file->getClientOriginalName();
             $random_file_name = Str::random(4).'_'.$file_name;
-            while(file_exists('upload/images/hinh_sach/'.$random_file_name)){
+            while(file_exists('upload/images/'.$random_file_name)){
                 $random_file_name = Str::random(4).'_'.$file_name; 
             }
-            $file->move('upload/images/hinh_sach',$random_file_name);
-            $input['hinh'] = 'upload/images/hinh_sach/'.$random_file_name;
+            $file->move('upload/images/', $random_file_name);
+            $input['hinh'] = $random_file_name;
         }
         else $input['hinh']='';
 
@@ -75,42 +75,60 @@ class SachController extends Controller
                         ->with('success','Sach created successfully');
     }
 
-    public function getThemSach() {
-        return view('backend.sach.themsach');
+    public function show($id)
+    {
+        $book = Sach::find($id);
+        return view('sach.show', compact('book'));
     }
 
-    public function postThemSach(ThemSachRequest $request) {
-        $validated = $request->validated();
-        $name_hinh ='';
-        if($request->hasFile('hinh_san_pham')){
-            if($request->file('hinh_san_pham')->isValid()) {
-                $file= $request->file('hinh_san_pham');
-                $name= $file->getClientOriginalName();
-                $file->move('public/images', $name);
-                $name_hinh= $name;
-            }
-        }
-        $data = new Sach;
-        $data['ten_sach'] = $request->ten_sach;
-        $data['id_tac_gia'] = $request->id_tac_gia;
-        $data['gioi_thieu'] = $request->gioi_thieu;
-        $data['doc_thu'] = $request->doc_thu;
-        $data['id_loai_sach'] = $request->id_loai_sach;
-        $data['id_nha_xuat_ban'] = $request->id_nha_xuat_ban;
-        $data['so_trang'] = $request->so_trang;
-        $data['ngay_xuat_ban'] = $request->ngay_xuat_ban;
-        $data['kich_thuoc'] = $request->kich_thuoc;
-        $data['sku'] = $request->sku;
-        $data['trong_luong'] = $request->trong_luong;
-        $data['trang_thai'] = $request->trang_thai;
-        $data['hinh'] = $request->hinh;
-        $data['don_gia'] = $request->don_gia;
-        $data['gia_bia'] = $request->gia_bia;
-        $data['giam_gia'] = $request->giam_gia;
-        $data['noi_bat'] = $request->noi_bat;
+    public function edit($id)
+    {
+        $book = Sach::find($id);
+        return view('sach.edit', ['book' => $book]);
+    }
 
-        $data->save();
-        return back()->with('success', 'Thêm thành công');
+    public function update(Request $request, $id)
+    {
+        $book = Sach::findOrFail($id);
+        $book->trang_thai = isset($request->trang_thai)?$request->trang_thai:false;
+        $book->noi_bat = isset($request->noi_bat)?$request->noi_bat:false;
+
+        $input = $request->all();
+
+        if($request->hasFile('hinh')){
+            $file = $request->file('hinh');
+            $file_extension = $file->getClientOriginalExtension(); //lay duoi file
+            if($file_extension == 'png' || $file_extension == 'jpg' || $file_extension == 'jpeg'){
+
+            }
+            else
+                return redirect()->back()->with('errror', 'Hệ thống chưa hỗ trợ định dạng file mới upload!');
+            $file_name = $file->getClientOriginalName();
+            $random_file_name = Str::random(4).'_'.$file_name;
+            while(file_exists('upload/images/'.$random_file_name)){
+                $random_file_name = Str::random(4).'_'.$file_name; 
+            }
+            $file->move('upload/images/', $random_file_name);
+            $input['hinh'] = $random_file_name;
+        }
+        else $input['hinh'] = $book->hinh;
+
+        $book->update($input);
+
+        return redirect()->route('sach.index')
+                        ->with('success','Book updated successfully');
+    }
+
+    public function destroy(Request $request)
+    {
+        $book = Sach::findOrFail($request->id_book);
+        $book->delete();
+        return redirect()->route('sach.index')
+                        ->with('success','Book deleted successfully');
+    }
+
+    public function getThemSach() {
+        return view('backend.sach.themsach');
     }
 
     public function ThongKe() {
@@ -136,4 +154,5 @@ class SachController extends Controller
                                              'thongkesachtheoquy'   =>$thongkesachtheoquy,
                                              'thongkesachtheonam'   =>$thongkesachtheonam]);
     }
+    
 }

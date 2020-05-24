@@ -15,7 +15,8 @@ class Loai_Sach extends Model
         'trang_thai',
     ];
 
-    public function sach() {
+    public function sach() 
+    {
         return $this->hasMany('App\Sach');
     }
 }

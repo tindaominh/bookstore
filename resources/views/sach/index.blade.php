@@ -2,9 +2,10 @@
 @section('content')
 @include('layouts.header1')
 	<!-- Content Wrapper. Contains page content -->
-	<div class="content-wrapper">
+	<div class="content-wrapper" style="margin-top: 50px;">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
+		@include('layouts.errors')
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
@@ -53,37 +54,66 @@
 										echo $price  . "đ"; 
 									?></td>
 								<td>
-									<a class = "btn btn-info" href="#">Show</a>
-									<a class = "btn btn-primary" href="#">Edit</a>
-									<a class = "btn btn-danger" href="#">Edit</a>
+									<a class = "btn btn-info" href="{{route('sach.show', $book->id)}}">Show</a>
+									<a class="btn btn-primary" href="{{route('sach.edit', $book->id)}}">Edit</a>
+									<button class="btn btn-danger"  data-bookid={{$book->id}} data-toggle="modal" data-target="#deleteBook">Delete</button>
 								</td>
 							</tr>
 						@endforeach
-					
+
 					</tbody>
 					<tfoot>
-					<tr>
-					<th>STT</th>
-					<th>Tên sách</th>
-					<th>Tác giả</th>
-					<th>Nhà xuất bản</th>
-					<th>Giá bìa</th>
-					<th>Thao tác</th>
-					</tr>
+						<tr>
+							<th>STT</th>
+							<th>Tên sách</th>
+							<th>Tác giả</th>
+							<th>Nhà xuất bản</th>
+							<th>Giá bìa</th>
+							<th>Thao tác</th>
+						</tr>
 					</tfoot>
+					<!-- Modal Delete -->
+					<div class="modal modal-danger fade" id="deleteBook" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+							<!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+							<h4 class="modal-title text-center" id="myModalLabel">Notification</h4>
+							</div>
+							<form action="{{route('sach.destroy', 'test')}}" method="post">
+								{{method_field('delete')}}
+								{{csrf_field()}}
+							<div class="modal-body">
+							<p class="text-center">
+								Do you want to delete this book? 
+							</p>
+								<input type="hidden" name="id_book" id="book_id" value="">
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+								<button type="submit" class="btn btn-warning">Delete</button>
+							</div>
+							</form>
+						</div>
+						</div>
+					</div>
+					<!-- End Modal delete-->
+
 				</table>
-				</div>
-				<!-- /.card-body -->
 			</div>
-			<!-- /.card -->
-			</div>
-			<!-- /.col -->
+			<!-- /.card-body -->
 		</div>
-		<!-- /.row -->
-		</section>
-		<!-- /.content -->
+		<!-- /.card -->
 	</div>
-	<!-- /.content-wrapper -->
+	<!-- /.col -->
+</div>
+<!-- /.row -->
+
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 @endsection
 	
 
