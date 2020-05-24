@@ -4,13 +4,16 @@
 @section('content')
 @include('layouts.header1')
     <div class="container">
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success">
-            <p>{{ $message }}</p>
+        @include('layouts.errors')
+        <div class="col-lg-12">
+            <div class="col-lg-7">
+                <h1>Thông tin sách</h1>
             </div>
-        @endif
-        
-        <div class="row" style="padding-top: 100px;">
+            <div class="col-lg-5" style="padding-top: 22px;">
+                <a href="{{route('sach.index')}}" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 30px;">
             <div class="col-lg-12">
             <form action="{{route('sach.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -66,10 +69,10 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                            <label><input type="checkbox" name="trang_thai" value="1" checked="checked"> Trạng thái</label>
+                            <label><input type="checkbox" name="trang_thai" value="1" checked="checked" >Trạng thái</label>
                     </div>
                     <div class="form-group col-md-4">
-                        <label><input type="checkbox" name="noi_bat" value="1" checked="checked"> Nổi bật</label>
+                        <label><input type="checkbox" name="noi_bat" value="1" checked="checked" >Nổi bật</label>
                     </div>
                     <div class="form-group col-md-4">
                         <button class="btn btn-primary" type="submit" label="Thêm">Thêm</button>
@@ -79,5 +82,4 @@
             </div>
         </div>
     </div>
-@include('layouts.footer')
 @endsection

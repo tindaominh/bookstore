@@ -29,9 +29,10 @@ class Sach extends Model
         'noi_bat',
     ];
 
-    public function loai_sach() {
-        return $this->belongsTo('App\Loai_Sach');
-    }
+    public function loai_sach() 
+    {
+        return $this->belongsTo('App\Loai_Sach', 'id_loai_sach', 'id');
+    } 
 
     public function tac_gia()
     {
