@@ -25,7 +25,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users','NguoiDungController');
 });
 
-// Route::resource('sach', 'SachController');
+Route::resource('sach', 'SachController');
 Route::group(['middleware' =>'locale'], function() {
     Route::get('thay-doi-ngon-ngu/{language}','TrangChuController@ThayDoiNgonNgu')->name('thaydoingonngu');
 
@@ -47,7 +47,7 @@ Route::group(['middleware' =>'locale'], function() {
         Route::post('gio-hang/tien-hanh-dat-hang/thanh-cong','NguoiDungController@DatHang')->name('nguoidung.dathang.thanhcong');
     });
 
-    Route::prefix('sach')->group(function() {
+    Route::prefix('sach1')->group(function() {
         Route::get('danh-sach-sach','SachController@getSach')->name('sach');
         Route::get('chi-tiet-sach/{id}','SachController@getSachId')->name('sach.chitiet');
     });

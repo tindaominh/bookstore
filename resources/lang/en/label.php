@@ -5,6 +5,7 @@
         'login' => 'Log in',
         'contact' => 'Contact',
         'account' => 'Account',
+        'myaccount' => 'My Account',
     ];
 
 ?>
