@@ -28,4 +28,9 @@ class TrangChuController extends Controller
                              'tin_tuc'  =>$tin_tuc]);
     }
 
+    public function ThayDoiNgonNgu($language) {
+        \Session::put('locale', $language);
+        return redirect()->back();
+    }
+
 }

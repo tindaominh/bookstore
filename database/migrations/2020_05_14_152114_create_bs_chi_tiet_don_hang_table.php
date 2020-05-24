@@ -22,7 +22,7 @@ class CreateBsChiTietDonHangTable extends Migration
             $table->string('thanh_tien')->nullable();
             $table->timestamps();
 
-            // $table->foreign('id_don_hang')->references('id')->on('don_hang')->onUpdate('RESTRICT')->onDelete('cascade');
+            $table->foreign('id_don_hang')->references('id')->on('don_hang')->onUpdate('RESTRICT')->onDelete('cascade');
             // $table->foreign('id_sach')->references('id')->on('sach')->onUpdate('RESTRICT')->onDelete('cascade');
         });
     }

@@ -1,6 +1,11 @@
-<?php 
-    return[
-        'home' => 'Home Page',
-        'book' => 'Book'
-    ]
+
+<?php
+    return [
+        'home' => 'Home',
+        'book' => 'Book',
+        'login' => 'Log in',
+        'contact' => 'Contact',
+        'account' => 'Account',
+    ];
+
 ?>

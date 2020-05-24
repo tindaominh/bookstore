@@ -10,15 +10,14 @@
 						
 							
 						<ul id="header_links">
-							<li><a href="/account">Tài khoản của tôi</a></li>
+							<li><a href="/account"> @lang('label.account') của tôi</a></li>
 							
 							<li><a href="#">Yêu thích</a></li>
 							
-							
-							<!-- <li><a href="#">So sách</a></li> -->
-							
-							
-							<li><a href="{{route('nguoidung.dangnhap')}}">Đăng nhập</a></li>
+							<li><a href="{{route('nguoidung.dangnhap')}}">@lang('label.login')</a></li>
+
+							<li><a href="{!! route('thaydoingonngu',['language' => 'vi']) !!}">Vi</a></li>
+							<li><a href="{!! route('thaydoingonngu',['language' => 'en']) !!}">En</a></li>
 							
 						</ul>
 						
@@ -761,7 +760,41 @@
 				</div>
 			</div>
 			
+			<div id="field_slideshow" class="slideshow col-xs-12 col-sm-12 col-md-9">
 
+				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+					<ol class="carousel-indicators">
+						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+						<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+						<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+					</ol>
+
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<img src="//bizweb.dktcdn.net/100/197/269/themes/739166/assets/slider-re1.jpg?1587355076622" class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item">
+							<img src="//bizweb.dktcdn.net/100/197/269/themes/739166/assets/slider-re2.jpg?1587355076622" class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item">
+							<img src="//bizweb.dktcdn.net/100/197/269/themes/739166/assets/slider-re3.jpg?1587355076622" class="d-block w-100" alt="...">
+						</div>
+					</div>
+
+					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+
+					<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+
+				</div>
+
+			</div>
 
 
 		</div>
