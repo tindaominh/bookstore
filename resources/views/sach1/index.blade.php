@@ -24,7 +24,7 @@
                                         <div class="laster-thumb">
                                             
                                             <a href="#" class="prod-img">
-                                                <img src="{{asset('public/images')}}/{{$item->hinh}}" alt="{{$item->ten_sach}}" style="height:200px; width:170px;">
+                                                <img src="{{asset('public/images/'.$item->hinh)}}" alt="{{$item->ten_sach}}" style="height:200px; width:170px;">
                                             </a>
 
                                             <span class="tz-shop-meta">
@@ -42,7 +42,7 @@
                                     <div class="stl_full_width">
                                         <div class="right-block clearfix">
                                             <div class="left_cnt_product">
-                                                <h3><a href="/titan-gia-toc-rockefeller-dat-truoc-du-kien-phat-hanh-cuoi-t4-2020" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
+                                                <h3><a href="{{route('sach.chitiet',['id'=>$item->id])}}" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
                                                 <div class="product-price">
 
                                                     <span class="price-sale clearfix">

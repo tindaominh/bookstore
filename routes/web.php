@@ -47,6 +47,7 @@ Route::prefix('nguoi-dung')->group(function() {
 
 Route::prefix('sach')->group(function() {
     Route::get('danh-sach-sach','SachController@getSach')->name('sach');
+    Route::get('chi-tiet-sach/{id}','SachController@getSachId')->name('sach.chitiet');
 });
 
 //admin

@@ -8,9 +8,22 @@
 </head>
 <body>
     <div class="container">
+        
         <div class="row">
-            <div class="col-md-12">
-                <canvas id="myChart" width="100" height="450"></canvas>
+            <div class="col-md-4">
+                <canvas id="myChart"></canvas>     
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <canvas id="myChart1" width="800" height="450"></canvas>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <canvas id="myChart2"></canvas>  
             </div>
         </div>
     </div>
@@ -19,38 +32,104 @@
     new Chart(document.getElementById("myChart"), {
         type: 'bar',
         data: {
-        labels: [
-            @foreach($thongkesachtheothang as $item)
-                '{{$item->ngay}}',
+            labels: [
+                @foreach($thongkesachtheothang as $item)
+                    '{{$item->ngay}}',
+                @endforeach
+            ],
+            datasets: [
+                {
+                    label: "Tổng tiền bán được: ",
+                    backgroundColor: [
+                        @foreach($mang_mau as $item)
+                            '#{{$item}}',
+                        @endforeach
+                    ],
+                    data: [
+                        @foreach($thongkesachtheothang as $item)
+                            '{{$item->TT}}' ,
+                        @endforeach
+                    ]
+                }
+            ]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: 'Thống kê sách bán được theo tháng'
+            }
+        }
+    });
+
+</script>
+
+<script>
+    new Chart(document.getElementById("myChart1"), {
+    type: 'horizontalBar',
+    data: {
+      labels: [
+            @foreach($thongkesachtheoquy as $item)
+                '{{$item->quy}}',
             @endforeach
-        ],
-        datasets: [
-            {
-            label: "Population (millions)",
+      ],
+      datasets: [
+        {
+            label: "Tổng tiền bán được: ",
             backgroundColor: [
                 @foreach($mang_mau as $item)
                     '#{{$item}}',
                 @endforeach
             ],
             data: [
-                @foreach($thongkesachtheothang as $item)
-                    '{{$item->TT}}',
+                @foreach($thongkesachtheoquy as $item)
+                    '{{$item->TT}}' ,
                 @endforeach
             ]
-            }
-        ]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Thống kê sách bán được theo quý'
+      }
+    }
+});
+</script>
+
+<script>
+    new Chart(document.getElementById("myChart2"), {
+        type: 'pie',
+        data: {
+        labels: [
+            @foreach($thongkesachtheonam as $item)
+                '{{$item->year}}',
+            @endforeach
+        ],
+        datasets: [{
+            label: "Tổng tiền bán được: ",
+                backgroundColor: [
+                    @foreach($mang_mau as $item)
+                        '#{{$item}}',
+                    @endforeach
+                ],
+                data: [
+                    @foreach($thongkesachtheonam as $item)
+                        '{{$item->TT}}' ,
+                    @endforeach
+                ]
+        }]
         },
         options: {
-        legend: { display: false },
         title: {
             display: true,
-            text: 'Predicted world population (millions) in 2050'
+            text: 'Thống kê sách bán được theo năm'
         }
         }
     });
-
 </script>
-
 
 </body>
 </html>
