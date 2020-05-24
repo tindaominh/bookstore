@@ -25,38 +25,45 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users','NguoiDungController');
 });
 
-Route::resource('sach', 'SachController');
+Route::group(['middleware' => 'locale'], function()
+{
+    Route::get('change-language/{lang}', 'HomeController@changeLanguages')->name('change-language');
 
-Route::get('/', 'TrangChuController@index')->name('trangchu');
+    Route::resource('sach', 'SachController');
 
-
-Route::prefix('contact')->group(function() {
-    Route::get('','ContactController@index')->name('contact.index');
-});
-
-Route::prefix('nguoi-dung')->group(function() {
-    Route::get('dang-nhap','NguoiDungController@getDangNhap')->name('nguoidung.dangnhap');
-    Route::get('gio-hang/thong-tin-gio-hang','NguoiDungController@ThongTinGioHang')->name('nguoidung.giohang');
-    Route::get('gio-hang/them-vao-gio-hang/{id}','NguoiDungController@ThemVaoGioHang')->name('nguoidung.them.giohang');
-    Route::post('gio-hang/cap-nhat-gio-hang','NguoiDungController@CapNhatGioHang');
+    Route::get('/', 'TrangChuController@index')->name('trangchu');
 
 
-});
-
-//admin
-Route::group(['prefix'=>'admin'], function() {
-    Route::prefix('sach')->group(function() {
-        Route::get('them-sach','SachController@getThemSach')->name('admin.sach');
-        Route::post('them-sach','SachController@postThemSach')->name('admin.sach.them');
+    Route::prefix('contact')->group(function() {
+        Route::get('','ContactController@index')->name('contact.index');
     });
+
+    Route::prefix('nguoi-dung')->group(function() {
+        Route::get('dang-nhap','NguoiDungController@getDangNhap')->name('nguoidung.dangnhap');
+        Route::get('gio-hang/thong-tin-gio-hang','NguoiDungController@ThongTinGioHang')->name('nguoidung.giohang');
+        Route::get('gio-hang/them-vao-gio-hang/{id}','NguoiDungController@ThemVaoGioHang')->name('nguoidung.them.giohang');
+        Route::post('gio-hang/cap-nhat-gio-hang','NguoiDungController@CapNhatGioHang');
+
+
+    });
+
+    //admin
+    Route::group(['prefix'=>'admin'], function() {
+        Route::prefix('sach')->group(function() {
+            Route::get('them-sach','SachController@getThemSach')->name('admin.sach');
+            Route::post('them-sach','SachController@postThemSach')->name('admin.sach.them');
+        });
+    });
+
+
+
+    Auth::routes();
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Auth::routes();
+
+    Route::get('/home', 'HomeController@index')->name('home');
 });
 
 
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

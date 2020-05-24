@@ -77,9 +77,8 @@ class SachController extends Controller
     public function update(Request $request, $id)
     {
         $book = Sach::findOrFail($id);
-        $book->trang_thai = isset($request->trang_thai)?$request->trang_thai:false;
-        $book->noi_bat = isset($request->noi_bat)?$request->noi_bat:false;
-
+        // $book->trang_thai = $request->input['trang_thai'];
+        // $book->noi_bat = $request->input['noi_bat'];
         $input = $request->all();
 
         if($request->hasFile('hinh')){
@@ -99,6 +98,7 @@ class SachController extends Controller
             $input['hinh'] = $random_file_name;
         }
         else $input['hinh'] = $book->hinh;
+        
 
         $book->update($input);
 

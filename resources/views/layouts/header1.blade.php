@@ -407,7 +407,7 @@
                     <nav id="fieldmegamenu-main">
                         <ul>
                             
-                            <li class="root active"><a href="/">Trang chủ</a></li>
+                            <li class="root active"><a href="/">{{__('label.home')}}</a></li>
                             
                             <li class="root "><a href="/sach-ban-chay">SÁCH BÁN CHẠY</a></li>
                             
@@ -418,6 +418,8 @@
                             <li class="root "><a href="/blog">Blog</a></li>
                             
                             <li class="root "><a href="/lien-he">Liên hệ</a></li>
+                            <li class="root"><a href="{route('change-language', ['en'] !!})">English</a></li>
+                            <li class="root"><a href="{route('change-language', ['vi'] !!})">Vietnam</a></li>
                             
                         </ul>
                     </nav>

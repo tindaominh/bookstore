@@ -76,10 +76,10 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-4">
-                            <label><input type="checkbox" name="trang_thai" value="{{$book->trang_thai}}" {{($book->trang_thai == 1)? 'checked': ''}} > Trạng thái</label>
+                            <label><input type="checkbox" name="trang_thai" value="1" {{($book->trang_thai == 1)? 'checked': ''}} > Trạng thái</label>
                     </div>
                     <div class="form-group col-md-4">
-                        <label><input type="checkbox" name="noi_bat" value="{{$book->noi_bat}}" {{($book->noi_bat == 1)? 'checked': ''}} > Nổi bật</label>
+                        <label><input type="checkbox" name="noi_bat" value="1" {{($book->noi_bat == 1)? 'checked': ''}} > Nổi bật</label>
                     </div>
                     <div class="form-group col-md-4">
                         <button class="btn btn-warning" type="submit" label="Thêm">Save change</button>
