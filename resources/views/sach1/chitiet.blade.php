@@ -169,6 +169,13 @@
 
                                         </div>
                                     </div>
+                                   <span style="font-size:16px;"><strong>Về tác giả:</strong></span>
+
+                                    <div class="" style="">
+                                        <img src="{{asset('public/images/hinh_tac_gia/'.$tac_gia->hinh)}}" alt="{{$tac_gia->ten_tac_gia}}" style="height:200px; width:170px; float: left; padding-top: 10px;">
+                                        <div style=" margin-left: 10px; ">{!! $tac_gia->gioi_thieu !!}</div>
+                                    </div>
+                                   
                                 </div>
                             </div>
                         </div>

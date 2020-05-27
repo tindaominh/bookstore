@@ -110,10 +110,10 @@
 																	
 																	<div class="product-price">
 																		<p class="price-sale clearfix">
-																			<small>{{number_format($item->don_gia)}} ₫</small>
+																			<small>{{number_format($item->don_gia)}} đ</small>
 																		</p>
 																		<p class="price-regular">
-																		<small>{{number_format($item->gia_bia)}} ₫</small>
+																		<small>{{number_format($item->gia_bia)}} đ</small>
 																		</p>
 																				
 																		<div class="bizweb-product-reviews-badge" data-id="17624409">
@@ -189,17 +189,26 @@
 																<h3><a href="{{route('sach.chitiet',['id'=>$item->id])}}" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
 																<div class="product-price">
 	
-																	<span class="price-sale clearfix">
-																		<small>
-																			@if ($item->don_gia == null)
-																				Liên hệ 
-																			@else
-																			 {{number_format($item->don_gia)}} ₫
-																			@endif
-																		</small>
-																	</span>
+																	<div class="product-price">
+																		<p class="price-sale clearfix">
+																			<small>
+																				@if ($item->don_gia == null)
+																					Liên hệ 
+																				@else
+																				{{number_format($item->don_gia)}} đ
+																				@endif
+																			</small>
+																		</p>
 
-																	<div class="bizweb-product-reviews-badge" data-id="17624409"></div>
+																		<p class="price-regular">
+																			<small>{{number_format($item->gia_bia)}} đ</small>
+																		</p>
+																				
+																		<div class="bizweb-product-reviews-badge" data-id="17624409">
+																			
+																		</div>
+																	</div>
+
 																</div>
 															</div>
 
@@ -383,21 +392,17 @@
 													<div class="inline-block_relative">
 														<div class="image_holder_wrap">
 															
-															<a href="/alpha-books-tuyen-dung-giam-doc-dong-sach-y-hoc-va-suc-khoe">
-																<img alt="{{$item->tieu_de_tin}}" src="{{$item->hinh_dai_dien}}" />
+															<a href="{{route('tintuc.chitiet',['id'=>$item->id])}}">
+																<img alt="{{$item->tieu_de_tin}}" src="{{asset('public/images/hinh_tin_tuc/'.$item->hinh_dai_dien)}}" />
 															</a>
 															
 														</div>
 														<div class="right_blog_home">
 															<div class="content">
-																<h3 class="sds_post_title"><a href="#" title="{{$item->tieu_de_tin}}">{{$item->tieu_de_tin}}</a></h3>
-																<span class="block_post_date"><i class="fa fa-calendar"></i> {{$item->ngay_dang}}</span>
-																<p class="sds_post_desc">
-																	
-																	{{$item->tieu_de_tin}}
-																	
-																</p>
-																<a href="#" class="r_more">Xem thêm</a>
+																<h3 class="sds_post_title"><a href="{{route('tintuc.chitiet',['id'=>$item->id])}}" title="{{$item->tieu_de_tin}}">{{$item->tieu_de_tin}}</a></h3>
+																<span class="block_post_date"><i class="fa fa-calendar"></i> {{($item->ngay_dang)==null?'07-05-2020':$item->ngay_dang}}</span>
+																
+																<a href="{{route('tintuc')}}" class="r_more">Xem thêm</a>
 															</div>
 														</div>
 													</div>

@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth']], function() {
 });
 
 Route::resource('sach', 'SachController');
+
 Route::group(['middleware' =>'locale'], function() {
     Route::get('thay-doi-ngon-ngu/{language}','TrangChuController@ThayDoiNgonNgu')->name('thaydoingonngu');
 
@@ -53,6 +54,13 @@ Route::group(['middleware' =>'locale'], function() {
         Route::get('chi-tiet-sach/{id}','SachController@getSachId')->name('sach.chitiet');
     });
 });
+
+Route::prefix('tin-tuc')->group(function() {
+    Route::get('','TinTucController@getTinTuc')->name('tintuc');
+    Route::get('/chi-tiet/{id}','TinTucController@getTinTucId')->name('tintuc.chitiet');
+});
+
+
 //admin
 Route::group(['prefix'=>'admin'], function() {
     Route::prefix('sach')->group(function() {

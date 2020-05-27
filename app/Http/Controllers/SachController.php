@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreSach;
 use Illuminate\Support\Str;
 use App\Sach;
+use App\Tac_Gia;
 
 class SachController extends Controller
 {
@@ -25,11 +26,28 @@ class SachController extends Controller
 
     public function getSachId($id) {
         $sach = Sach::where('id',$id)->first();
-        
+
+        $tac_gia = DB::table('bs_sach')
+                    ->where('bs_sach.id', $id)
+                    ->join('bs_tac_gia', 'bs_tac_gia.id', '=', 'bs_sach.id_tac_gia')
+                    ->select(['bs_sach.id_tac_gia', 
+                              'bs_tac_gia.id', 
+                              'bs_tac_gia.ten_tac_gia', 
+                              'bs_tac_gia.ngay_sinh', 
+                              'bs_tac_gia.gioi_thieu', 
+                              'bs_tac_gia.hinh'])
+                    ->first();
+       
         $id_loaisach = $sach->id_loai_sach;
+
         $sachcungloai = Sach::where('id_loai_sach',$id_loaisach)->get();
+
         $sach2 = Sach::where('id_loai_sach',1)->paginate(6);
-        return view('sach1.chitiet',['sach' => $sach, 'sach2' => $sach2, 'sachcungloai' => $sachcungloai]);
+
+        return view('sach1.chitiet',['sach'         => $sach, 
+                                     'sach2'        => $sach2, 
+                                     'sachcungloai' => $sachcungloai,
+                                     'tac_gia'      => $tac_gia]);
     }
 
     public function create()
