@@ -39,6 +39,7 @@ Route::group(['middleware' =>'locale'], function() {
     Route::prefix('nguoi-dung')->group(function() {
         Route::get('dang-nhap','NguoiDungController@getDangNhap')->name('nguoidung.dangnhap');
         Route::get('gio-hang/thong-tin-gio-hang','NguoiDungController@ThongTinGioHang')->name('nguoidung.giohang');
+        Route::post('gio-hang/them-vao-gio-hang/{id}','NguoiDungController@ThemVaoGioHangChiTiet');
         Route::get('gio-hang/them-vao-gio-hang/{id}','NguoiDungController@ThemVaoGioHang')->name('nguoidung.them.giohang');
         Route::post('gio-hang/cap-nhat-gio-hang','NguoiDungController@CapNhatGioHang');
         Route::get('gio-hang/xoa-gio-hang/{id}','NguoiDungController@XoaGioHang')->name('nguoidung.xoa.giohang');

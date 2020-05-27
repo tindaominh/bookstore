@@ -44,7 +44,11 @@
 									<li>
 										<a class="cart-toggler" href="{{route('nguoidung.giohang')}}">
 											<span class="cart-no"> <span class="cart-icon"></span> 
-												<span class="fa fa-shopping-cart"></span> (<span id="cart-total" >{{Cart::count()}}</span>) sản phẩm
+												<span class="fa fa-shopping-cart"></span> 
+												@if(Cart::count() !== 0)
+												<span id="th_gio_hang" >({{Cart::count()}})</span>
+												@endif
+												sản phẩm
 											</span>
 										</a>
 										
@@ -799,6 +803,7 @@
 
 		</div>
 	</div>
+
 		
 
 

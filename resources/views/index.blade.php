@@ -1,10 +1,14 @@
 @extends('layouts.main')
 
 
-@section('content')
-@include('layouts.header')
+@section('header')
+	@include('layouts.header')
+@endsection
 
-	<div class="fix_height_mobile" style="width:100%;"></div>
+@section('content')
+
+<div id="wrapper">
+	<div class="fix_height_mobile" style="width:100%;">
 
 		<!-- tac gia noi bat -->
 		<div class="container">
@@ -26,7 +30,7 @@
 
 								<h4><a href="">{{$tg->ten_tac_gia}}</a></h4>
 								<div class="icon" >
-									<img style="height: 250px; max-width: true;" src="{{asset('public/images/hinh_tac_gia')}}/{{$tg->hinh}}" alt=""/>
+									<img style="height: 250px; max-width: true;" src="{{asset('public/images/hinh_tac_gia/'.$tg->hinh)}}" alt=""/>
 								</div>							
 									
 							</div>
@@ -67,7 +71,6 @@
 
 							<div id="field_bestsellers" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
 
-								
 								<div class="owl-wrapper-outer">
 									<div class="owl-wrapper" style="width: 1000px; left: 0px; display: block; transition: all 0ms ease 0s; transform: translate3d(0px, 0px, 0px);">
 										@foreach($sach as $item)
@@ -86,17 +89,15 @@
 																	</div>
 																</div>
 																
-																<a href="#" class="prod-img">
+																<a href="{{route('sach.chitiet',['id'=>$item->id])}}" class="prod-img">
 																	<img src="{{asset('public/images/'.$item->hinh)}}" alt="{{$item->ten_sach}}" style="height:200px; width:170px;">
 																</a>
 																
 																<span class="tz-shop-meta">
 
-																	<a href="{{route('nguoidung.them.giohang',['id'=> $item->id])}}" class="tzshopping add_to_cart add-cart"  title="Mua ngay" name="$item->id"
-																		onclick="alert('Thêm vào giỏ hàng thành công')"	 id="btnThemVaoGioHang"
-																	>
-																		<i class="fa fa-shopping-cart"></i> Mua ngay
-																	</a>
+																<a href="{{route('nguoidung.them.giohang',['id'=>$item->id])}}" class="tzshopping add_to_cart add-cart" onclick="alert('Thêm vào giỏ hàng thành công')">
+																	<i class="fa fa-shopping-cart"></i> Mua ngay
+																</a>
 																	
 																</span>
 
@@ -105,7 +106,7 @@
 														<div class="stl_full_width">
 															<div class="right-block clearfix">
 																<div class="left_cnt_product">
-																	<h3><a href="#" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
+																	<h3><a href="{{route('sach.chitiet',['id'=>$item->id])}}" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
 																	
 																	<div class="product-price">
 																		<p class="price-sale clearfix">
@@ -169,18 +170,15 @@
 													<div class="stl_full_width">
 														<div class="laster-thumb">
 															
-															<a href="#" class="prod-img">
-																<img src="{{asset('public/images')}}/{{$item->hinh}}" alt="{{$item->ten_sach}}" style="height:200px; width:170px;">
+															<a href="{{route('sach.chitiet',['id'=>$item->id])}}" class="prod-img">
+																<img src="{{asset('public/images/'.$item->hinh)}}" alt="{{$item->ten_sach}}" style="height:200px; width:170px;">
 															</a>
 
 															<span class="tz-shop-meta">
-																
-																<input type="hidden" name="variantId" value="32051630" />
-																<a href="{{route('nguoidung.them.giohang',['id'=> $item->id])}}" class="tzshopping add_to_cart add-cart"  title="Mua ngay"
-																onclick="alert('Thêm vào giỏ hàng thành công')"	 id="btnThemVaoGioHang"	name="{{$item->id}}"
-																>
-																	<i class="fa fa-shopping-cart"></i> Mua ngay
-																</a>
+
+															<a href="{{route('nguoidung.them.giohang',['id'=>$item->id])}}" class="tzshopping add_to_cart add-cart" onclick="alert('Thêm vào giỏ hàng thành công')">
+																<i class="fa fa-shopping-cart"></i> Mua ngay
+															</a>
 																
 															</span>
 														</div>
@@ -188,7 +186,7 @@
 													<div class="stl_full_width">
 														<div class="right-block clearfix">
 															<div class="left_cnt_product">
-																<h3><a href="/titan-gia-toc-rockefeller-dat-truoc-du-kien-phat-hanh-cuoi-t4-2020" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
+																<h3><a href="{{route('sach.chitiet',['id'=>$item->id])}}" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
 																<div class="product-price">
 	
 																	<span class="price-sale clearfix">
@@ -262,18 +260,15 @@
 																	</div>
 																</div>
 																
-																<a href="#" class="prod-img">
-																	<img src="{{asset('public/images')}}/{{$item->hinh}}" alt="{{$item->ten_sach}}" style="height:200px; width:170px;">
+																<a href="{{route('sach.chitiet',['id'=>$item->id])}}" class="prod-img">
+																	<img src="{{asset('public/images/'.$item->hinh)}}" alt="{{$item->ten_sach}}" style="height:200px; width:170px;">
 																</a>
 
 																<span class="tz-shop-meta">
 
-																	<input type="hidden" name="variantId" value="30026589" />
-																	<a href="{{route('nguoidung.them.giohang',['id'=> $item->id])}}" class="tzshopping add_to_cart add-cart"  title="Mua ngay"
-																	onclick="alert('Thêm vào giỏ hàng thành công')"	 id="btnThemVaoGioHang" name="{{$item->id}}"	
-																	>
-																		<i class="fa fa-shopping-cart"></i> Mua ngay
-																	</a>
+																<a href="{{route('nguoidung.them.giohang',['id'=>$item->id])}}" class="tzshopping add_to_cart add-cart" onclick="alert('Thêm vào giỏ hàng thành công')">
+																	<i class="fa fa-shopping-cart"></i> Mua ngay
+																</a>
 																	
 																</span>
 
@@ -282,7 +277,7 @@
 														<div class="stl_full_width">
 															<div class="right-block clearfix">
 																<div class="left_cnt_product">
-																	<h3><a href="/bo-cam-nang-mo-nha-hang" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
+																	<h3><a href="{{route('sach.chitiet',['id'=>$item->id])}}" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
 
 																	<div class="product-price">
 																		<span class="price-sale clearfix">
@@ -316,52 +311,7 @@
 					</div>	
 				
 				<!-- qua tang doanh nhan -->
-					<div id="field_newproductslider" class="block vertical_mode">
-						<h4 class="title_block"> 
-							<a href="quan-tri-doanh-nghiep">Sách tiếng anh</a>
-						</h4>
-						<div id="new_products" class="owl-carousel owl-theme block_content" style="opacity: 1; display: block;">  
-
-							<div class="owl-wrapper-outer">
-								<div class="owl-wrapper" style="width: 1566px; left: 0px; display: block; transition: all 0ms ease 0s; transform: translate3d(0px, 0px, 0px);">
-									<div class="owl-item" style="width: 261px;">
-
-										<div class="item">
-											
-											@foreach($sach2 as $item)
-						
-											<div class="item-content clearfix">
-												<div class="row">
-													<div class="col-md-5 col-sm-3 col-xs-5">
-														<div class="left-content">
-															<a href="/dong-tien-gan-lien-loi-nhuan" class="prod-img">
-																<img src="{{asset('public/images')}}/{{$item->hinh}}" alt="{{$item->ten_sach}}">
-															</a>
-														</div>
-													</div>
-													<div class="col-md-7 col-sm-9 col-xs-7">
-														<div class="right-content">
-															<h3 class="sub_title_font product-name"><a href="#" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
-															<div class="bizweb-product-reviews-badge" data-id="17758144"></div>
-															<div class="content_price">
-																
-																<small>Liên hệ</small>
-																
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											@endforeach
-		
-										</div>
-
-									</div>
-								</div>
-							</div>
-
-						</div>
-					</div>
+					@include('layouts.sachtienganh')
 
 				<!-- y kien khach hang -->
 					<div class="block block_testimonials">
@@ -470,47 +420,12 @@
 		</div>
 
 	</div>
+</div>
 
+</div>
 </section>
-
-
-
-	@include('layouts.footer')
 @endsection
 
-@section('scripts')
-<script>
-    $(document).ready(function(){
-        $("#btnThemVaoGioHang").click(function(){
-            var id= $("#btnThemVaoGioHang").attr('name');
-            // var soluong= $("#Th_soluong").val();
-            // if(soluong<=0){
-            //     alert('Vui lòng chọn Số lượng >0');
-            //     return false;
-            // }
-            $.ajax({
-                type:'POST',
-                dataType: 'json',
-                url:"{{ url('nguoi-dung/gio-hang/them-vao-gio-hang') }}/"+id,
-				// data: { _token : '<?php echo csrf_token() ?>', sl : soluong},
-				data: { _token : '<?php echo csrf_token() ?>'},
-                success:function(data) {
-                    // if(data.n==0)
-                    //     alert('Thêm vào giỏ hàng không thành công');
-                    // else
-                    // {
-                        alert('Thêm vào giỏ hàng thành công');
-                    // }
-                },
-                error:function(xhr,status,error) {
-                    alert(error);
-                }
-            });
-            return false;
-        });
-	});
-	
-</script>
 
-@endsection
+
 

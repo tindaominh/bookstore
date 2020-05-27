@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-@yield('head')
-@include('layouts.head')
+    @include('layouts.head')
 <body>
-    <div id="wrapper">
-        @yield('content')
-    </div>
-    @yield('scripts')
-    @include('layouts.script')
+
+   
+    @section('header')
     @show
 
+    @yield('content')
 
+    @yield('scripts')
+        @include('layouts/script')
+        
+    @show
+    
+    @section('footer')
+        @include('layouts.footer')
+        
+    @show
 </body>
 </html>

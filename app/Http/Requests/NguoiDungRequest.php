@@ -27,7 +27,7 @@ class NguoiDungRequest extends FormRequest
             'ho_kh' => 'required',
             'ten_kh' => 'required',
             'dia_chi' => 'required',
-            'dien_thoai' => 'required',
+            'dien_thoai' => 'required|numeric|min:10',
             'email' => 'required',
         ];
     }

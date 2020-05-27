@@ -24,8 +24,12 @@ class SachController extends Controller
     }
 
     public function getSachId($id) {
-        $sach = Sach::find($id)->first();
-        return view('sach1.chitiet',['sach' => $sach]);
+        $sach = Sach::where('id',$id)->first();
+        
+        $id_loaisach = $sach->id_loai_sach;
+        $sachcungloai = Sach::where('id_loai_sach',$id_loaisach)->get();
+        $sach2 = Sach::where('id_loai_sach',1)->paginate(6);
+        return view('sach1.chitiet',['sach' => $sach, 'sach2' => $sach2, 'sachcungloai' => $sachcungloai]);
     }
 
     public function create()

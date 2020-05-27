@@ -126,15 +126,20 @@ class NguoiDungController extends Controller
         return view('nguoidung.giohang');
     }
 
+    public function ThemVaoGioHangChiTiet(Request $request, $id) {
+        $sach = Sach::where('id', $id)->first();
+		if($sach == null){
+            echo json_encode(array('n' => "0"));
+        }else {
+            Cart::add($id, $sach->ten_sach, $request->sl, $sach->don_gia, ['hinh' => $sach->hinh]);
+            echo json_encode(array('n' => "1"));
+        }
+    }
+
     public function ThemVaoGioHang($id) {
         $sach = Sach::where('id', $id)->first();
-		if($sach->don_gia == null){
-            $price = "Liên hệ cửa hàng";
-            Cart::add($id, $sach->ten_sach, 1, $price, ['hinh' => $sach->hinh]);
-        }else {
-            Cart::add($id, $sach->ten_sach, 1, $sach->don_gia, ['hinh' => $sach->hinh]);
-        }
-		return back();
+        Cart::add($id, $sach->ten_sach, 1, $sach->don_gia, ['hinh' => $sach->hinh]);
+        return back();
     }
 
     public function CapNhatGioHang(Request $request){
