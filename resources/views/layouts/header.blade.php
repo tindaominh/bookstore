@@ -10,11 +10,11 @@
 						
 							
 						<ul id="header_links">
-							<li><a href="/account"> @lang('label.account') của tôi</a></li>
+							<li><a href="/account"> {{ __('label.myaccount')}}</a></li>
 							
-							<li><a href="#">Yêu thích</a></li>
+							<li><a href="#">{{ __('label.booklove')}}</a></li>
 							
-							<li><a href="{{route('nguoidung.dangnhap')}}">@lang('label.login')</a></li>
+							<li><a href="{{route('nguoidung.dangnhap')}}">{{ __('label.login')}}</a></li>
 
 							<li><a href="{!! route('thaydoingonngu',['language' => 'vi']) !!}">Vi</a></li>
 							<li><a href="{!! route('thaydoingonngu',['language' => 'en']) !!}">En</a></li>
@@ -32,8 +32,7 @@
 					<a class="logo" href="{{route('trangchu')}}">
 						
 						<img class="logo img-responsive" alt="Bookstore" src="{{asset('public/images/hinh_logo/bookstore.png')}}" style="height: 40px; width: 200px;" />
-						
-						
+
 					</a>
 				</div>
 				<div id="sticky_top" class="col-xs-12 col-sm-12 col-md-9" style="margin-top: 36px; right: auto;">
@@ -48,7 +47,7 @@
 												@if(Cart::count() !== 0)
 												<span id="th_gio_hang" >({{Cart::count()}})</span>
 												@endif
-												sản phẩm
+												{{ __('label.cart')}}
 											</span>
 										</a>
 										
@@ -64,18 +63,9 @@
 								</div>
 							</div>
 							<div id="search_block_top">
-								<form class="input-group search-bar" action="/search" method="get" role="search" id="searchbox">
-									<div class="collection-selector" style="display:none;">
-										<div class="search_text">Tất cả: </div>
-										<div id="search_info" class="list_search" style="display: none;">
-												
-											
-											
-											<div class="liner_search"></div>
-											<div class="search_item active" data-coll-id="0">Tất cả</div>
-										</div>
-									</div>
-									<input type="search" name="query" value="" placeholder="Từ khóa tìm kiếm... " class="input-group-field st-default-search-input search-text" autocomplete="off">
+								<form class="input-group search-bar" action="{{route('timkiem')}}" method="get" role="search" id="searchbox">
+									
+									<input type="search" name="tim_kiem" value="" placeholder="{{ __('label.search')}}... " class="input-group-field st-default-search-input search-text" autocomplete="off">
 									<button class="btn button-search" type="submit">
 										<i class="fa fa-search"></i>
 									</button>
@@ -92,7 +82,7 @@
 					<div class="header-vmegamenu col-md-3">
 						<div class="v-megamenu-container ">
 							<div class="v-megamenu-title">
-								<h3><i class="fa fa-bars"></i> Danh mục sách <em class="open-close"></em></h3>
+								<h3><i class="fa fa-bars"></i> {{ __('label.booklist')}} <em class="open-close"></em></h3>
 							</div>
 							<div class="v-megamenu" style="display:none">
 								<ul>
@@ -405,17 +395,17 @@
 						<nav id="fieldmegamenu-main">
 							<ul>
 								
-								<li class="root active"><a href="/">Trang chủ</a></li>
+								<li class="root active"><a href="{{route('home')}}">Trang chủ</a></li>
 								
 								<li class="root "><a href="/sach-ban-chay">SÁCH BÁN CHẠY</a></li>
 								
-								<li class="root "><a href="/khoa-hoc-truc-tuyen">Khóa học trực tuyến</a></li>
+								<li class="root "><a href="{{route('binhluan')}}">Ý kiến khách hàng</a></li>
 								
-								<li class="root "><a href="/tin-tuc">Tin tức</a></li>
+								<li class="root "><a href="{{route('tintuc')}}">Tin tức</a></li>
 								
 								<li class="root "><a href="/blog">Blog</a></li>
 								
-								<li class="root "><a href="/lien-he">Liên hệ</a></li>
+								<li class="root "><a href="{{route('lienhe')}}">Liên hệ</a></li>
 								
 							</ul>
 						</nav>

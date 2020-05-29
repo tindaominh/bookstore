@@ -27,6 +27,8 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::resource('sach', 'SachController');
 
+
+
 Route::group(['middleware' =>'locale'], function() {
     Route::get('thay-doi-ngon-ngu/{language}','TrangChuController@ThayDoiNgonNgu')->name('thaydoingonngu');
 
@@ -52,17 +54,29 @@ Route::group(['middleware' =>'locale'], function() {
     Route::prefix('sach1')->group(function() {
         Route::get('danh-sach-sach','SachController@getSach')->name('sach');
         Route::get('chi-tiet-sach/{id}','SachController@getSachId')->name('sach.chitiet');
+        Route::get('tim-kiem', 'TrangChuController@getTimKiem')->name('timkiem');
+    });
+
+    Route::prefix('binh-luan')->group(function() {
+        Route::get('danh-sach','BinhLuanController@getBinhLuan')->name('binhluan');
+        Route::get('y-kien-khach-hang','BinhLuanController@getThemYKien')->name('ykienkhachhang');
+        Route::post('y-kien-khach-hang','BinhLuanController@postThemYKien')->name('post.ykienkhachhang');
+        Route::get('tim-kiem', 'BinhLuanController@getTimKiem')->name('timkiem');
+    });
+
+    Route::prefix('tin-tuc')->group(function() {
+        Route::get('','TinTucController@getTinTuc')->name('tintuc');
+        Route::get('/chi-tiet/{id}','TinTucController@getTinTucId')->name('tintuc.chitiet');
+        Route::get('tim-kiem', 'TinTucController@getTimKiem')->name('timkiem');
     });
 });
 
-Route::prefix('tin-tuc')->group(function() {
-    Route::get('','TinTucController@getTinTuc')->name('tintuc');
-    Route::get('/chi-tiet/{id}','TinTucController@getTinTucId')->name('tintuc.chitiet');
-});
 
 
 //admin
-Route::group(['prefix'=>'admin'], function() {
+Route::get('admin/logout', 'UserController@getLogout');
+Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function() {
+    // Route::get('', 'UserController@postLogin');
     Route::prefix('sach')->group(function() {
         Route::get('them-sach','SachController@getThemSach')->name('admin.sach');
         Route::post('them-sach','SachController@postThemSach')->name('admin.sach.them');
@@ -70,9 +84,6 @@ Route::group(['prefix'=>'admin'], function() {
     });
 });
 
-
-Auth::routes();
+Route::get('/lien-he', 'LienHeController@index')->name('lienhe');
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-

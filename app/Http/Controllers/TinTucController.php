@@ -21,4 +21,15 @@ class TinTucController extends Controller
         $tintuc = Tin_Tuc::where('id', $id)->first();
         return view('tintuc.chitiet', ['tintuc' => $tintuc, 'tintucmoi' => $tintucmoi]);
     }
+
+    public function getTimKiem(Request $request) {
+        $chuoi = trim($request->tim_kiem);
+        
+        if (strlen($chuoi)==0) 
+            return redirect()->back();
+        
+        $tintuc= Tin_Tuc::where('tieu_de_tin','like', '%'.$chuoi.'%')->paginate(6);
+
+        return view('tintuc.index',['tintuc' => $tintuc]);
+    }
 }

@@ -33,4 +33,15 @@ class TrangChuController extends Controller
         return redirect()->back();
     }
 
+    public function getTimKiem(Request $request) {
+        $chuoi = trim($request->tim_kiem);
+        
+        if (strlen($chuoi)==0) 
+            return redirect()->back();
+        
+        $sach= Sach::where('ten_sach','like', '%'.$chuoi.'%')->orderBy('ngay_xuat_ban')->paginate(100);
+
+        return view('sach1.index',['sach' => $sach]);
+    }
+
 }

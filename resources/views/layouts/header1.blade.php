@@ -9,15 +9,15 @@
                     
                         
                     <ul id="header_links">
-                        <li><a href="/account">Tài khoản của tôi</a></li>
+                        <li><a href="/account">{{ __('label.myaccount')}}</a></li>
                         
-                        <li><a href="#">Yêu thích</a></li>
+                        <li><a href="#">{{ __('label.booklove')}}</a></li>
                         
                         
                         <!-- <li><a href="#">So sách</a></li> -->
                         
                         
-                        <li><a href="{{route('nguoidung.dangnhap')}}">Đăng nhập</a></li>
+                        <li><a href="{{route('nguoidung.dangnhap')}}">{{ __('label.login')}}</a></li>
                         
                     </ul>
                     
@@ -49,7 +49,7 @@
                                             <span id="th_gio_hang" >({{Cart::count()}})</span>
                                             @endif
 
-                                            sản phẩm
+                                            {{ __('label.cart')}}
                                         </span>
                                     </a>
                                     
@@ -65,18 +65,9 @@
                             </div>
                         </div>
                         <div id="search_block_top">
-                            <form class="input-group search-bar" action="/search" method="get" role="search" id="searchbox">
-                                <div class="collection-selector" style="display:none;">
-                                    <div class="search_text">Tất cả: </div>
-                                    <div id="search_info" class="list_search" style="display: none;">
-                                            
-                                        
-                                        
-                                        <div class="liner_search"></div>
-                                        <div class="search_item active" data-coll-id="0">Tất cả</div>
-                                    </div>
-                                </div>
-                                <input type="search" name="query" value="" placeholder="Từ khóa tìm kiếm... " class="input-group-field st-default-search-input search-text" autocomplete="off">
+                            <form class="input-group search-bar" action="{{route('timkiem')}}" method="get" role="search" id="searchbox">
+                                
+                                <input type="search" name="tim_kiem" value="" placeholder="{{ __('label.search')}}... " class="input-group-field st-default-search-input search-text" autocomplete="off">
                                 <button class="btn button-search" type="submit">
                                     <i class="fa fa-search"></i>
                                 </button>
@@ -96,7 +87,7 @@
                     <div class="v-megamenu-container mar-top dropdown">
 
                         <div class="v-megamenu-title">
-                            <h3><i class="fa fa-bars"></i> Danh mục sách <em class="open-close"></em></h3>
+                            <h3><i class="fa fa-bars"></i> {{ __('label.booklist')}} <em class="open-close"></em></h3>
                         </div>
 
                         <div class="v-megamenu" style="display:none">
@@ -412,17 +403,17 @@
                     <nav id="fieldmegamenu-main">
                         <ul>
                             
-                            <li class="root active"><a href="/">Trang chủ</a></li>
+                            <li class="root active"><a href="{{route('home')}}">Trang chủ</a></li>
                             
                             <li class="root "><a href="/sach-ban-chay">SÁCH BÁN CHẠY</a></li>
                             
-                            <li class="root "><a href="/khoa-hoc-truc-tuyen">Khóa học trực tuyến</a></li>
+                            <li class="root "><a href="{{route('binhluan')}}">Ý kiến khách hàng</a></li>
                             
-                            <li class="root "><a href="/tin-tuc">Tin tức</a></li>
+                            <li class="root "><a href="{{route('tintuc')}}">Tin tức</a></li>
                             
                             <li class="root "><a href="/blog">Blog</a></li>
                             
-                            <li class="root "><a href="/lien-he">Liên hệ</a></li>
+                            <li class="root "><a href="{{route('lienhe')}}">Liên hệ</a></li>
                             
                         </ul>
                     </nav>
