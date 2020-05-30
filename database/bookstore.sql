@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 17, 2020 at 08:26 AM
+-- Generation Time: May 29, 2020 at 10:08 AM
 -- Server version: 10.4.10-MariaDB
--- PHP Version: 7.4.0
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,11 +31,10 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `bs_binh_luan`;
 CREATE TABLE IF NOT EXISTS `bs_binh_luan` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `id_sach` int(11) DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_nguoi_dung` int(11) DEFAULT NULL,
   `noi_dung` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `id_binh_luan_cha` int(11) DEFAULT NULL,
-  `ngay_binh_luan` int(11) DEFAULT NULL,
+  `hinh` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `trang_thai` tinyint(4) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -822,6 +821,20 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`(250))
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -837,7 +850,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`) USING HASH
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'tindaominh@gmail.com', NULL, '$2y$10$dGAGoOQwkffPsgY/Gj2.HeY08IQHw/XxbS/6APXoyrXjr4ZklWBTq', NULL, '2020-05-28 12:23:16', '2020-05-28 12:23:16');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
