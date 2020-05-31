@@ -80,10 +80,12 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function() {
     Route::prefix('sach')->group(function() {
         Route::get('them-sach','SachController@getThemSach')->name('admin.sach');
         Route::post('them-sach','SachController@postThemSach')->name('admin.sach.them');
-        Route::get('thong-ke','SachController@ThongKe')->name('admin.sach.thongke');
     });
 });
 
 Route::get('/lien-he', 'LienHeController@index')->name('lienhe');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('thong-ke','DonHangController@ThongKe')->name('admin.sach.thongke');

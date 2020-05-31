@@ -152,29 +152,5 @@ class SachController extends Controller
     public function getThemSach() {
         return view('backend.sach.themsach');
     }
-
-    public function ThongKe() {
-
-        $mang_mau = array('f56954', '00a65a', 'f39c12', '00c0ef', '3c8dbc', 'd2d6de', '371719', '994684', 'f906d6', '3b00fd','d1f60a', '00f92a');
-        
-        $thongkesachtheothang = DB::table('bs_don_hang')
-        ->select(DB::raw('CONCAT(month(`ngay_dat`),"-" , year(`ngay_dat`)) as ngay, sum(`tong_tien`) as TT'))->groupBy('ngay')->orderBy('ngay_dat','ASC')->get();
-
-        
-        $data = array();
-    
-        $thongkesachtheoquy = DB::table('bs_don_hang')
-        ->select(DB::raw('CONCAT(month(`ngay_dat`),"-" , year(`ngay_dat`)) as quy, sum(`tong_tien`) as TT'))
-        // ->where()
-        ->groupBy('quy')->orderBy('ngay_dat','ASC')->get();
-
-        $thongkesachtheonam = DB::table('bs_don_hang')
-        ->select(DB::raw('CONCAT(year(`ngay_dat`)) as year, sum(`tong_tien`) as TT'))->groupBy('year')->orderBy('year','ASC')->get();
-
-        return view('backend.sach.thong_ke',['mang_mau'             =>$mang_mau, 
-                                             'thongkesachtheothang' =>$thongkesachtheothang, 
-                                             'thongkesachtheoquy'   =>$thongkesachtheoquy,
-                                             'thongkesachtheonam'   =>$thongkesachtheonam]);
-    }
     
 }

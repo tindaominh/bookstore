@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 29, 2020 at 10:08 AM
+-- Generation Time: May 31, 2020 at 01:49 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -39,7 +39,14 @@ CREATE TABLE IF NOT EXISTS `bs_binh_luan` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `bs_binh_luan`
+--
+
+INSERT INTO `bs_binh_luan` (`id`, `email`, `id_nguoi_dung`, `noi_dung`, `hinh`, `trang_thai`, `created_at`, `updated_at`) VALUES
+(3, 'tin.daominh@gmail.com', NULL, 'test', 'diary_4.jpg', 1, '2020-05-29 14:52:43', '2020-05-29 14:52:43');
 
 -- --------------------------------------------------------
 
@@ -191,21 +198,21 @@ CREATE TABLE IF NOT EXISTS `bs_don_hang` (
 --
 
 INSERT INTO `bs_don_hang` (`id`, `ma_don_hang`, `tong_tien`, `ngay_dat`, `id_nguoi_dung`, `ho_ten_nguoi_nhan`, `email_nguoi_nhan`, `so_dien_thoai_nguoi_nhan`, `trang_thai`, `dia_chi_nguoi_nhan`, `created_at`, `updated_at`) VALUES
-(1, 'S240220161', 92000, '2016-02-24 00:00:00', NULL, 'Nguyễn Xuân Hùng', 'hungnguyenxuan118@gmail.com', '0909090909', 1, NULL, NULL, NULL),
-(2, 'S240220162', 85000, '2016-02-24 14:20:10', NULL, 'Nguyễn Thy Mỹ Linh', 'linhnguyenthymy136@gmail.com', '0980808080', 1, NULL, NULL, NULL),
-(3, 'S240220163', 720000, '2016-02-24 13:57:59', NULL, 'Lê Văn Việt', 'lvviet@gmail.com', '0908236548', 1, NULL, NULL, NULL),
-(4, 'S250220164', 658000, '2016-02-25 02:04:35', NULL, 'Huỳnh Bảo', 'huynhbao@gmail.com', '0908848484', 1, NULL, NULL, NULL),
-(5, 'S250220165', 838000, '2016-02-25 14:10:40', NULL, 'Võ Thị Mỹ Dung', 'vothimydung@gmail.com', '0908084865', 1, NULL, NULL, NULL),
-(13, NULL, 95000, '2016-03-08 07:24:48', '2', 'Hùng Nguyễn', 'botautomail@gmail.com', '0909090909', 0, '357 LHP P2 Q10', NULL, NULL),
-(14, NULL, 410000, '2016-03-09 10:43:23', '3', 'Hùng Nguyễn Xuân', 'nxhung118@gmail.com', '09090909', 2, '357 LHP P2 Q10', NULL, NULL),
-(19, NULL, 1329000, '2016-03-15 09:35:43', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', '0909090909', 2, 'asd asdas asd asdas das', NULL, NULL),
-(20, NULL, 1329000, '2016-03-15 09:38:52', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', '0909090909', 2, 'asd asdas asd asdas das', NULL, NULL),
-(21, NULL, 529000, '2016-03-15 09:41:19', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', '0909090909', 2, 'asd asdas asd asdas das', NULL, NULL),
-(22, NULL, 462000, '2016-03-15 09:42:32', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', '0909090909', 2, 'asd asdas asd asdas das', NULL, NULL),
-(23, NULL, 560000, '2016-03-15 09:44:53', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', '0909090909', 2, 'asd asdas asd asdas das', NULL, NULL),
-(24, NULL, 560000, '2016-03-15 10:00:16', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', '0909090909', 2, 'asd asdas asd asdas das', NULL, NULL),
-(25, NULL, 1229000, '2016-03-15 10:17:05', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', '0909090909', 2, 'asd asdas asd asdas das', NULL, NULL),
-(26, NULL, 208000, '2016-03-15 10:35:50', '3', 'Hùng Nguyễn Xuân', 'nxhung118@gmail.com', '09090909', 2, '357 LHP P2 Q10', NULL, NULL);
+(1, 'S240220161', 92000, '2016-02-24 00:00:00', NULL, 'Nguyễn Xuân Hùng', 'hungnguyenxuan118@gmail.com', '0909090909', 1, NULL, '2018-12-31 17:00:00', NULL),
+(2, 'S240220162', 85000, '2016-02-24 14:20:10', NULL, 'Nguyễn Thy Mỹ Linh', 'linhnguyenthymy136@gmail.com', '0980808080', 1, NULL, '2019-02-10 17:00:00', NULL),
+(3, 'S240220163', 720000, '2016-02-24 13:57:59', NULL, 'Lê Văn Việt', 'lvviet@gmail.com', '0908236548', 1, NULL, '2019-03-19 17:00:00', NULL),
+(4, 'S250220164', 658000, '2016-02-25 02:04:35', NULL, 'Huỳnh Bảo', 'huynhbao@gmail.com', '0908848484', 1, NULL, '2019-04-22 17:00:00', NULL),
+(5, 'S250220165', 838000, '2016-02-25 14:10:40', NULL, 'Võ Thị Mỹ Dung', 'vothimydung@gmail.com', '0908084865', 1, NULL, '2019-05-22 17:00:00', NULL),
+(13, NULL, 95000, '2016-03-08 07:24:48', '2', 'Hùng Nguyễn', 'botautomail@gmail.com', '0909090909', 0, '357 LHP P2 Q10', '2019-06-04 17:00:00', NULL),
+(14, NULL, 410000, '2016-03-09 10:43:23', '3', 'Hùng Nguyễn Xuân', 'nxhung118@gmail.com', '09090909', 2, '357 LHP P2 Q10', '2019-07-18 17:00:00', NULL),
+(19, NULL, 1329000, '2016-03-15 09:35:43', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', '0909090909', 2, 'asd asdas asd asdas das', '2019-09-20 17:00:00', NULL),
+(20, NULL, 1329000, '2016-03-15 09:38:52', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', '0909090909', 2, 'asd asdas asd asdas das', '2019-08-22 17:00:00', NULL),
+(21, NULL, 529000, '2016-03-15 09:41:19', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', '0909090909', 2, 'asd asdas asd asdas das', '2019-09-30 17:00:00', NULL),
+(22, NULL, 462000, '2016-03-15 09:42:32', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', '0909090909', 2, 'asd asdas asd asdas das', '2019-11-02 17:00:00', NULL),
+(23, NULL, 560000, '2016-03-15 09:44:53', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', '0909090909', 2, 'asd asdas asd asdas das', '2019-12-02 17:00:00', NULL),
+(24, NULL, 560000, '2016-03-15 10:00:16', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', '0909090909', 2, 'asd asdas asd asdas das', '2020-01-17 17:00:00', NULL),
+(25, NULL, 1229000, '2016-03-15 10:17:05', '1', 'Hùng Nguyễn', 'hungnguyenxuan118@gmail.com', '0909090909', 2, 'asd asdas asd asdas das', '2020-02-12 17:00:00', NULL),
+(26, NULL, 208000, '2016-03-15 10:35:50', '3', 'Hùng Nguyễn Xuân', 'nxhung118@gmail.com', '09090909', 2, '357 LHP P2 Q10', '2020-03-19 17:00:00', NULL);
 
 -- --------------------------------------------------------
 
