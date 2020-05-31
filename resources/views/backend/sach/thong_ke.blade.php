@@ -1,32 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="{{asset('public/js/Chart.min.js')}}"></script>
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.main')
+
+
+@section('content')
+@include('layouts.header1')
+<br>
     <div class="container">
-        
-        <div class="row">
-            <div class="col-md-4">
-                <canvas id="myChart"></canvas>     
+        <div class="card mb-3">
+            <div class="card-header" style="font-size: 20px">
+
+                <i class="fa fa-area-chart"></i> Thống kê sách bán được theo tháng
+                <div style="display: include; float: right;">
+                    <select name="chart_year" id="chart_year">
+                        @foreach($years as $year)
+                            <option value="{{$year->year}}">{{$year->year}}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
+
+            <div class="card-body">
+                <canvas id="myChart" width="100%" height="30"></canvas>  
+            </div>
+            <!-- <div class="card-footer small text-muted">Updated at ...</div> -->
         </div>
 
-        <div class="row">
-            <div class="col-md-4">
-                <canvas id="myChart1" width="800" height="450"></canvas>
-            </div>
-        </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-4">
-                <canvas id="myChart2"></canvas>  
+    <div class="container">
+        <div class="card mb-3">
+            <div class="card-header" style="font-size: 20px">
+                <i class="fa fa-area-chart"></i> Thống kê sách bán được theo năm
             </div>
+            <div class="card-body">
+                <canvas id="myChart1" width="50%" height="20"></canvas>  
+            </div>
+            <!-- <div class="card-footer small text-muted">Updated at ...</div> -->
         </div>
     </div>
+
+@endsection
+
+@section('scripts')
+<script src="{{asset('public/js/Chart.min.js')}}"></script>
 
 <script>
     new Chart(document.getElementById("myChart"), {
@@ -34,7 +49,9 @@
         data: {
             labels: [
                 @foreach($thongkesachtheothang as $item)
+                
                     '{{$item->ngay}}',
+                
                 @endforeach
             ],
             datasets: [
@@ -54,11 +71,32 @@
             ]
         },
         options: {
-            legend: { display: false },
-            title: {
-                display: true,
-                text: 'Thống kê sách bán được theo tháng'
-            }
+           scales: {
+            //    xAxes:[{
+            //        time: {
+            //            unit: 'date'
+            //        },
+            //        gridlines: {
+            //            display: false
+            //        },
+            //        ticks: {
+            //            maxTicksLimit: 7
+            //        }
+            //    }],
+               yAxes:[{
+                   ticks: {
+                       min: 0,
+                       max: 10000000,
+                       maxTicksLimit: 500000
+                   },
+                   gridlines: {
+                       color: "rgba(0,0,0, .125)"
+                   }
+               }],
+           },
+           legend: {
+               display: false
+           }
         }
     });
 
@@ -66,41 +104,6 @@
 
 <script>
     new Chart(document.getElementById("myChart1"), {
-    type: 'horizontalBar',
-    data: {
-      labels: [
-            @foreach($thongkesachtheoquy as $item)
-                '{{$item->quy}}',
-            @endforeach
-      ],
-      datasets: [
-        {
-            label: "Tổng tiền bán được: ",
-            backgroundColor: [
-                @foreach($mang_mau as $item)
-                    '#{{$item}}',
-                @endforeach
-            ],
-            data: [
-                @foreach($thongkesachtheoquy as $item)
-                    '{{$item->TT}}' ,
-                @endforeach
-            ]
-        }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Thống kê sách bán được theo quý'
-      }
-    }
-});
-</script>
-
-<script>
-    new Chart(document.getElementById("myChart2"), {
         type: 'pie',
         data: {
         labels: [
@@ -123,13 +126,13 @@
         }]
         },
         options: {
-        title: {
-            display: true,
-            text: 'Thống kê sách bán được theo năm'
-        }
+            title: {
+                display: false,
+                text: 'Thống kê sách bán được theo năm'
+            }
         }
     });
 </script>
 
-</body>
-</html>
+
+@endsection
