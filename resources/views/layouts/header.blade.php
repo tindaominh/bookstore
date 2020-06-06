@@ -31,7 +31,7 @@
 				<div id="header_logo" class="col-xs-12 col-sm-12 col-md-3">
 					<a class="logo" href="{{route('trangchu')}}">
 						
-						<img class="logo img-responsive" alt="Bookstore" src="{{asset('public/images/hinh_logo/bookstore.png')}}" style="height: 40px; width: 200px;" />
+						<img class="logo img-responsive" alt="Bookstore" src="{{asset('public/images/hinh_logo/bookstore.png')}}" style="height: 60px; width: 250px;" />
 
 					</a>
 				</div>
@@ -63,7 +63,7 @@
 								</div>
 							</div>
 							<div id="search_block_top">
-								<form class="input-group search-bar" action="{{route('timkiem')}}" method="get" role="search" id="searchbox">
+								<form class="input-group search-bar" action="{{route('sach.timkiem')}}" method="get" role="search" id="searchbox">
 									
 									<input type="search" name="tim_kiem" value="" placeholder="{{ __('label.search')}}... " class="input-group-field st-default-search-input search-text" autocomplete="off">
 									<button class="btn button-search" type="submit">
@@ -397,9 +397,9 @@
 								
 								<li class="root active"><a href="{{route('home')}}">Trang chủ</a></li>
 								
-								<li class="root "><a href="/sach-ban-chay">SÁCH BÁN CHẠY</a></li>
+								<li class="root "><a href="{{route('sach')}}">SÁCH BÁN CHẠY</a></li>
 								
-								<li class="root "><a href="{{route('binhluan')}}">Ý kiến khách hàng</a></li>
+								<li class="root "><a href="{{route('ykienkhachhang')}}">Ý kiến khách hàng</a></li>
 								
 								<li class="root "><a href="{{route('tintuc')}}">Tin tức</a></li>
 								

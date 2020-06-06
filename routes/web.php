@@ -54,7 +54,7 @@ Route::group(['middleware' =>'locale'], function() {
     Route::prefix('sach1')->group(function() {
         Route::get('danh-sach-sach','SachController@getSach')->name('sach');
         Route::get('chi-tiet-sach/{id}','SachController@getSachId')->name('sach.chitiet');
-        Route::get('tim-kiem', 'TrangChuController@getTimKiem')->name('timkiem');
+        Route::get('tim-kiem', 'TrangChuController@getTimKiem')->name('sach.timkiem');
     });
 
     Route::prefix('binh-luan')->group(function() {

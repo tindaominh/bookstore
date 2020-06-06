@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-    @include('layouts.head')
+    @yield('head')
+        @include('layouts.head')
+    @show
 <body>
 
    

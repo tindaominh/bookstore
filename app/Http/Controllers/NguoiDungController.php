@@ -7,6 +7,7 @@ use App\Http\Requests\NguoiDungRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMailNguoiDung;
+use App\Mail\SendMailAdmin;
 
 use Carbon\Carbon;
 
@@ -244,8 +245,10 @@ class NguoiDungController extends Controller
                 ];
             }
 
+            $admin = 'tin.daominh@gmail.com';
             
             Mail::to($request->email)->send(new SendMailNguoiDung($data));
+            Mail::to($admin)->send(new SendMailAdmin($data));
 
             Cart::destroy();
             

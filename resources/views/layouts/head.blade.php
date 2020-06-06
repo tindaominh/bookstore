@@ -8,6 +8,7 @@
     <!-- icons bootstraps -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
 
     <!-- css -->
     <link href="{{asset('public/css/bootstrap.min.css')}}" rel="stylesheet" />
@@ -25,6 +26,7 @@
     <link href="{{asset('public/css/frontend/iwish.css')}}" rel="stylesheet" />
     <link href="{{asset('public/css/frontend/theme.css')}}" rel="stylesheet" />
     <link href="{{asset('public/css/frontend/style1.scss.css')}}" rel="stylesheet" />
+    
 
     <!-- Theme skin -->
     <link href="{{asset('public/skins/default.css')}}" rel="stylesheet" />

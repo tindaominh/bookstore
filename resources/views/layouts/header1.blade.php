@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div id="search_block_top">
-                            <form class="input-group search-bar" action="{{route('timkiem')}}" method="get" role="search" id="searchbox">
+                            <form class="input-group search-bar" action="{{route('sach.timkiem')}}" method="get" role="search" id="searchbox">
                                 
                                 <input type="search" name="tim_kiem" value="" placeholder="{{ __('label.search')}}... " class="input-group-field st-default-search-input search-text" autocomplete="off">
                                 <button class="btn button-search" type="submit">
@@ -407,7 +407,7 @@
                             
                             <li class="root "><a href="/sach-ban-chay">SÁCH BÁN CHẠY</a></li>
                             
-                            <li class="root "><a href="{{route('binhluan')}}">Ý kiến khách hàng</a></li>
+                            <li class="root "><a href="{{route('ykienkhachhang')}}">Ý kiến khách hàng</a></li>
                             
                             <li class="root "><a href="{{route('tintuc')}}">Tin tức</a></li>
                             

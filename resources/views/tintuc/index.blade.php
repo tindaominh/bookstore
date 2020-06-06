@@ -17,12 +17,13 @@
         </div>
     </div>
 
-
+    
     <section class="tzblog-wrap">
         <div class="container">
+            
             <div class="row">
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 col-md-push-3">
-                    
+                  
                     <div class="row gird-margin">
                         @foreach($tintuc as $item)
                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
