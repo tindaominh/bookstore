@@ -58,7 +58,8 @@
 
             
             <div class="row" >
-               
+                
+            <h2 style="">Tìm thấy {{count($sach1)}} sản phẩm</h2>
 				@foreach($sach as $item)
 				
 					<div class="col-lg-3">
@@ -89,11 +90,12 @@
                                                     <h3><a href="{{route('sach.chitiet',['id'=>$item->id])}}" title="{{$item->ten_sach}}">{{$item->ten_sach}}</a></h3>
                                                     <div class="product-price">
 
+                                                        
                                                         <small>
                                                             @if ($item->don_gia == null)
                                                                 Liên hệ 
                                                             @else
-                                                            {{number_format($item->don_gia)}} đ
+                                                            {{number_format($item->don_gia)}} ₫
                                                             @endif
                                                         </small>
 

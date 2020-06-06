@@ -39,9 +39,9 @@ class TrangChuController extends Controller
         if (strlen($chuoi)==0) 
             return redirect()->back();
         
-        $sach= Sach::where('ten_sach','like', '%'.$chuoi.'%')->orderBy('ngay_xuat_ban')->paginate(100);
+        $sach= Sach::where('ten_sach','like', '%'.$chuoi.'%')->orderBy('id_loai_sach')->paginate(100);
 
-        return view('sach1.index',['sach' => $sach]);
+        return view('sach1.tim_kiem',['sach' => $sach,]);
     }
 
 }

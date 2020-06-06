@@ -5,9 +5,9 @@
     <div id="featured-slider-2" class="row">
         <div class="owl-carousel owl-theme" id="product_related" style="opacity: 1; display: block;">
             <div class="owl-wrapper-outer">
-                <div class="owl-wrapper" style="width: 3520px; left: 0px; display: block; transition: all 0ms ease 0s; transform: translate3d(0px, 0px, 0px);">
+                <div class="owl-wrapper" style="width: 1210px; left: 0px; display: block; transition: all 0ms ease 0s; transform: translate3d(0px, 0px, 0px);">
                     @foreach($sachcungloai as $item)
-                    <div class="owl-item" style="width: 220px;">
+                    <div class="owl-item" style="width: 228px;">
                         <div class="item">
                             <div class="item-inner">
                                 <div class="stl_full_width">
@@ -54,6 +54,7 @@
                     </div>
                     @endforeach
                 </div>
+               
             </div>
  
         </div>
