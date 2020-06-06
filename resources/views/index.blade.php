@@ -300,7 +300,7 @@
 									
 								</div>
 
-								<div class="qnt-addcart clearfix">
+								<div class="qnt-addcart clearfix" style="margin-bottom:30px;">
 									<a type="button" href="{{route('sach')}}" class="btn-cart add_to_cart_detail button_detail_product">Xem thêm</a>
 								</div>
 							</div>

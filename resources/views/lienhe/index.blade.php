@@ -1,5 +1,15 @@
 @extends('layouts.main')
 
+@section('head')
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;  /* The height is 400 pixels */
+            width: 100%;  /* The width is the width of the web page */
+        }
+    </style>
+@endsection
+
 @section('content')
 @include('layouts.header1')
 
@@ -17,10 +27,9 @@
     </div>
 
     <section id="content">
-        <div class="map">
-            <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Kuningan,+Jakarta+Capital+Region,+Indonesia&amp;aq=3&amp;oq=kuningan+&amp;sll=37.0625,-95.677068&amp;sspn=37.410045,86.572266&amp;ie=UTF8&amp;hq=&amp;hnear=Kuningan&amp;t=m&amp;z=14&amp;ll=-6.238824,106.830177&amp;output=embed">
-            </iframe>
-        </div>
+
+        <div id="map"></div>
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -62,4 +71,27 @@
     </section>
 </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+    // Initialize and add the map
+        function initMap() {
+        // The location of Uluru
+        var uluru = {lat: 10.806872, lng: 106.689944};
+        // The map, centered at Uluru
+        var map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 4, center: uluru});
+        // The marker, positioned at Uluru
+        var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap">
+    </script>
 @endsection

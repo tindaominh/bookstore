@@ -18,6 +18,9 @@
                         
                         
                         <li><a href="{{route('nguoidung.dangnhap')}}">{{ __('label.login')}}</a></li>
+
+                        <li><a href="{!! route('thaydoingonngu',['language' => 'vi']) !!}">Vi</a></li>
+						<li><a href="{!! route('thaydoingonngu',['language' => 'en']) !!}">En</a></li>
                         
                     </ul>
                     
@@ -405,7 +408,7 @@
                             
                             <li class="root active"><a href="{{route('home')}}">Trang chủ</a></li>
                             
-                            <li class="root "><a href="/sach-ban-chay">SÁCH BÁN CHẠY</a></li>
+                            <li class="root "><a href="{{route('sach')}}">SÁCH BÁN CHẠY</a></li>
                             
                             <li class="root "><a href="{{route('ykienkhachhang')}}">Ý kiến khách hàng</a></li>
                             

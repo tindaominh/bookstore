@@ -69,6 +69,10 @@ Route::group(['middleware' =>'locale'], function() {
         Route::get('/chi-tiet/{id}','TinTucController@getTinTucId')->name('tintuc.chitiet');
         Route::get('tim-kiem', 'TinTucController@getTimKiem')->name('timkiem');
     });
+
+    Route::get('lien-he', 'LienHeController@index')->name('lienhe');
+
+    Route::get('thong-ke','DonHangController@ThongKe')->name('admin.sach.thongke');
 });
 
 
